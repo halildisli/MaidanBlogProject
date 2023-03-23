@@ -7,30 +7,36 @@ namespace Maidan.Controllers
     public class HomeController : Controller
     {
         private readonly MaidanDbContext _context;
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger,MaidanDbContext context)
+        public HomeController(MaidanDbContext context)
         {
-            _logger = logger;
             _context = context;
+            if (_context.Articles.ToList().Count==0)
+            {
+                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
+                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
+                _context.SaveChanges();
+            }
         }
 
         public IActionResult Index()
         {
-            var articles = _context.Articles.OrderByDescending(a => a.ReleaseDate).ToList();
+            var articles = _context.Articles.ToList();
 
             return View(articles);
         }
 
-        public IActionResult Privacy()
+        public IActionResult AboutUs()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

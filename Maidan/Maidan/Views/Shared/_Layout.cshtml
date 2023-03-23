@@ -7,64 +7,97 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Maidan.styles.css" asp-append-version="true" />
+    
+    <!-- Dışarıdan alınan -->
+    <link rel="icon" href="/assets/img/favicon.ico" asp-append-version="true">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
+    <!-- Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" asp-append-version="true">
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/mediumish.css" rel="stylesheet" asp-append-version="true">
 </head>
-<body>
+<header>
+    <!-- Begin Header
+    ================================================== -->
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
-            <div class="container-fluid justify-content-between m-2">
-                <div>
-                    <a class="navbar-brand font-italic" href="#">ma<span class="text-warning">i</span>dan</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+        <!-- Begin Nav
+        ================================================== -->
+        <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container">
+                <!-- Begin Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="/assets/img/logo.png" alt="logo">
+                </a>
+                <!-- End Logo -->
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <!-- Begin Menu -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item m-2">
+                            <a class="nav-link" href="index.html">AboutUs<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link" href="post.html">Membership</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link btn btn-warning" asp-action="SignUp" asp-controller="Author">Sign Up</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link btn btn-success" asp-action="SignIn">Sign In</a>
+                        </li>
+                    </ul>
+                    <!-- End Menu -->
+                    <!-- Begin Search -->
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"></path></svg></span>
+                    </form>
+                    <!-- End Search -->
                 </div>
-                <div>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item m-1 ">
-                                <a class="nav-link text-white" aria-current="page" href="#">About Us</a>
-                            </li>
-                            <li class="nav-item m-1">
-                                <a class="nav-link text-white" href="#">Membership</a>
-                            </li>
-                            <li class="nav-item m-1">
-                                <a class="nav-link btn btn-warning rounded-3 text-white" href="#">Sign Up</a>
-                            </li>
-                            <li class="nav-item m-1">
-                                <a class="nav-link btn btn-success rounded-3 text-white" href="#">Sign In</a>
-                            </li>
-                            @*<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>*@
-                        </ul>
-                    </div>
-                </div>
-                
             </div>
         </nav>
+        <!-- End Nav
+        ================================================== -->
     </header>
+    <!-- End Header
+    ================================================== -->
+</header>
+<body>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Maidan - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
+<!-- Begin Footer
+   ================================================== -->
+<footer class="footer">
+    <p class="pull-left">
+        Copyright &copy; 2017 Your Website Name
+    </p>
+    <p class="pull-right">
+        Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+    </p>
+    <div class="clearfix">
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+<!-- /.container -->
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/assets/js/jquery.min.js" asp-append-version="true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous" asp-append-version="true"></script>
+<script src="/assets/js/bootstrap.min.js" asp-append-version="true"></script>
+<script src="/assets/js/ie10-viewport-bug-workaround.js" asp-append-version="true"></script>
+
+<!--Kendi Layout Kısmı-->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </html>

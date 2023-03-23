@@ -56,7 +56,6 @@ namespace Maidan.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Privacy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -66,7 +65,7 @@ namespace Maidan.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotalReadTime")
+                    b.Property<int?>("TotalReadTime")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
