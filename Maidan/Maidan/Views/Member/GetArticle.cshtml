@@ -1,44 +1,10 @@
-﻿@model IEnumerable<Article>
+﻿@model Article
 @{
 	ViewData["Title"] = "Index";
 	Layout = "_Layout";
-	
+	Author author = ViewBag.Author;
 }
 
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @{
-        foreach (Article article in Model)
-        {
-            <div class="col">
-                <div class="card h-100">
-                    <a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id">
-                        <img src="/images/articleImages/default-article-image.jpg" class="card-img-top" alt="@article.Title">
-                    </a>
-                    <div class="card-body">
-                        <a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id"><h5 class="card-title">@article.Title</h5></a>
-                        <p class="card-text">@article.Content</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="my-2">
-                            <a asp-action="UpdateArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-primary">Update Article</a>
-                        </div>
-						<div class="my-2">
-                            <a asp-action="DeleteArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-danger">Delete Article</a>
-                        </div class="my-2">
-                        <div class="my-2">
-                            <small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - article.UpdateDate).TotalMinutes)) mins ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-
-</div>
-
-
-@*
 <!-- Begin Article
 ================================================== -->
 <div class="container">
@@ -84,30 +50,26 @@
 				<!-- Begin Top Meta -->
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-						<a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"></a>
+						<a href="author.html"><img class="author-thumb" src="/images/authorImages/default-author-image.png" alt="Author Image"></a>
 					</div>
 					<div class="col-md-10">
-						<a class="link-dark" href="author.html">Sal</a><a href="#" class="btn follow">Follow</a>
-						<span class="author-description">Founder of WowThemes.net and creator of <b>"Mediumish"</b> theme that you're currently previewing. Developing professional premium themes, templates, plugins, scripts since 2012.</span>
-						<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
+						<a class="link-dark" href="author.html">@author.UserName</a><a href="#" class="btn follow">Follow</a>
+						<span class="author-description">@author.Bio</span>
+						<span class="post-date">@Model.ReleaseDate</span><span class="dot"></span><span class="post-read">@Model.TotalReadTime</span>
 					</div>
 				</div>
 
 				<!-- End Top Menta -->
-
-				@{
-					foreach (Article article in Model)
-					{
-						<h1 class="posttitle">@article.Title</h1>
+				
+						<h1 class="posttitle">@Model.Title</h1>
 
 						<img class="featured-image img-fluid" src="/images/articleImages/default-article-image.jpg" alt="">
 
 						<!-- Begin Post Content -->
 						<div class="article-post">
-							<p>@article.Content</p>
+							<p>@Model.Content</p>
 						</div>
 						<!-- End Post Content -->
-
 						<!-- Begin Tags -->
 						<div class="after-post-tags">
 							<ul class="tags">
@@ -118,10 +80,6 @@
 							</ul>
 						</div>
 						<!-- End Tags -->
-					}
-				}
-
-
 			</div>
 		</div>
 		<!-- End Post -->
@@ -130,8 +88,7 @@
 </div>
 <!-- End Article
 ================================================== -->
-
-		<!-- Begin Post -->
+<!-- Begin Post -->
 
 
 <div class="hideshare"></div>
@@ -141,8 +98,8 @@
 <div class="graybg">
 	<div class="container">
 		<div class="row listrecent listrelated">
-		@{
-			foreach (Article article in Model)
+			@{
+				foreach (Article article in ViewBag.Top3Articles as List<Article>)
 				{
 					<!-- begin post -->
 					<div class="col-md-4">
@@ -158,7 +115,7 @@
 											<a href="author.html"><img class="author-thumb" src="/images/authorImages/default-author-image.png" alt="Author Image"></a>
 										</span>
 										<span class="author-meta">
-											<span class="post-name"><a href="author.html">@article.AuthorId</a></span><br />
+											<span class="post-name"><a href="author.html">@User.Identity.Name</a></span><br />
 											<span class="post-date">@article.ReleaseDate.Date</span><span class="dot"></span><span class="post-read">@article.TotalReadTime</span>
 										</span>
 										<span class="post-read-more"><a href="post.html" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span>
@@ -169,7 +126,7 @@
 					</div>
 					<!-- end post -->
 				}
-		}
+			}
 		</div>
 	</div>
 </div>
@@ -190,6 +147,4 @@
 	</div>
 </div>
 <!-- End AlertBar
-================================================== -->*@
-
-
+================================================== -->

@@ -17,7 +17,7 @@ namespace Maidan
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<MaidanDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("myHome")));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<MaidanDbContext>().AddDefaultTokenProviders();
+            builder.Services.AddIdentity<Author, IdentityRole>().AddEntityFrameworkStores<MaidanDbContext>().AddDefaultTokenProviders();
 
             //builder.Services.AddAuthentication(
             //    opt =>

@@ -10,10 +10,10 @@ namespace Maidan.Controllers
     public class HomeController : Controller
     {
         private readonly MaidanDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Author> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        public HomeController(MaidanDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,SignInManager<IdentityUser> signInManager)
+        private readonly SignInManager<Author> _signInManager;
+        public HomeController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager,SignInManager<Author> signInManager)
         {
             _context = context;
             _userManager = userManager;
@@ -49,7 +49,7 @@ namespace Maidan.Controllers
             var isUserExist = await _userManager.FindByEmailAsync(appUser.Email);
             if (isUserExist == null)
             {
-                IdentityUser identityUser = new IdentityUser();
+				Author identityUser = new Author();
                 identityUser.Email = appUser.Email;
                 identityUser.UserName = appUser.Username;
                 IdentityResult result = await _userManager.CreateAsync(identityUser, appUser.Password);

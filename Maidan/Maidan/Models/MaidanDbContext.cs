@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
+using Maidan.Models.ViewModels;
 
 namespace Maidan.Models
 {
@@ -29,6 +30,7 @@ namespace Maidan.Models
                 new IdentityRole() { Name = "user", NormalizedName = "USER", ConcurrencyStamp = "10" }
                 );
         }
+        public DbSet<Maidan.Models.ViewModels.ArticleViewModel>? ArticleViewModel { get; set; }
     }
     
     
