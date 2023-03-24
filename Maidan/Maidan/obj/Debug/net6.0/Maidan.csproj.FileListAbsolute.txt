@@ -292,3 +292,4 @@ C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\ne
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

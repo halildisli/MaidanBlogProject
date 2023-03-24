@@ -1,0 +1,20 @@
+﻿@using Maidan.Models.AuthenticationModels;
+@model SignInViewModel
+@{
+    if (TempData["ValidateMessage"]!=null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["ValidateMessage"]
+        </div>
+    }
+}
+<form asp-controller="Home" asp-action="SignIn" method="post">
+    <input type="email" placeholder="email address" asp-for="Email"/>
+    <input type="password" placeholder="password" asp-for="Password"/>
+
+    <label>
+        <input type="checkbox" asp-for="RememberMe"/>
+        Remembe Me
+    </label>
+    <button type="submit">Sign In</button>
+</form>

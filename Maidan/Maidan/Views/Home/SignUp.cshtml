@@ -1,20 +1,30 @@
-﻿@model Maidan.Models.Author
+﻿@model Maidan.Models.ViewModels.AppUser
 
 @{
     ViewData["Title"] = "Sign Up maidan.";
 }
+
+@{
+    if (TempData["Message"]!=null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+}
+
 
 <h1 class="text-center">Sign Up</h1>
 
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="SignUp">
+        <form asp-action="SignUp" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Authorname" class="control-label"></label>
-                <input asp-for="Authorname" class="form-control" />
-                <span asp-validation-for="Authorname" class="text-danger"></span>
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -27,11 +37,6 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Sign Up" class="btn btn-primary" />
             </div>
         </form>
@@ -39,9 +44,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to Home Without Sign Up</a>
+    <a asp-action="Index" asp-controller="Home">Back to Home Without Sign Up</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

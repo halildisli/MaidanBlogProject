@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "roA0bg2XAf1fm26Z6oK/NcbOZ3n7nIXd+jz/tvJE/z2D7o9N1lCQxhjMtNvPQICl2Rkf6nEGDldrVvHQ8T+QTw==",
+  "dgSpecHash": "h3fxD0ZP34nXeA7naBNGPcJPLeG9KzBAri6yYQqba0rWRzVl+EM0sDDIVF6yKcvAITDDhco0IqArPlFHl1bIDg==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\Maidan.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.15\\microsoft.aspnetcore.authentication.jwtbearer.6.0.15.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.15\\microsoft.aspnetcore.cryptography.internal.6.0.15.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.15\\microsoft.aspnetcore.cryptography.keyderivation.6.0.15.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.15\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.15.nupkg.sha512",

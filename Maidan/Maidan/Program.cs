@@ -1,5 +1,9 @@
 using Maidan.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 namespace Maidan
 {
@@ -12,6 +16,19 @@ namespace Maidan
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<MaidanDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("myHome")));
+
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<MaidanDbContext>().AddDefaultTokenProviders();
+
+            //builder.Services.AddAuthentication(
+            //    opt =>
+            //    {
+            //        opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            //        opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //        opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    }
+            //    );
+
+
 
             var app = builder.Build();
 
@@ -27,6 +44,8 @@ namespace Maidan
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

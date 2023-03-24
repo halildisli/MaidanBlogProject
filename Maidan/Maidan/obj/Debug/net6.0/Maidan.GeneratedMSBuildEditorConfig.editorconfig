@@ -16,20 +16,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Author/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Author/SignUp.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXFNpZ25VcC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Home/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Home/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Member/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Shared/Error.cshtml]
