@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXENyZWF0ZUFydGljbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Member/DeleteArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXERlbGV0ZUFydGljbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Views/Member/GetArticle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEdldEFydGljbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
