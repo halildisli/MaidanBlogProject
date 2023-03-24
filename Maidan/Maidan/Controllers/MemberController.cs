@@ -33,14 +33,36 @@ namespace Maidan.Controllers
         //}
         public IActionResult Index(int id)
         {
-            return Ok();
+            var articles = _context.Articles.ToList();
+            return View(articles);
         }
 
         [HttpGet]
-        public async Task<IActionResult> LogOut()
+        public async Task<IActionResult> SignOut()
         {
             return RedirectToAction("Index","Home");
         }
+        [HttpGet]
+        public IActionResult CreateArticle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateArticle(CreateArticleViewModel createArticle)
+        {
+            if (ModelState.IsValid)
+            {
+                Article article = new Article();
+                article.AuthorId = _context.Authors.Where(a => a.UserName == User.Identity.Name).FirstOrDefault().Id;
+                article.Title = createArticle.Title;
+                article.Content = createArticle.Content;
+                article.Image = createArticle.Image;
+                _context.Articles.Add(article);
+                _context.SaveChanges();
+            }
+            return View();
+        }
+
 
         //[HttpGet]
         //[Route("SignIn")]

@@ -1,0 +1,92 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container">
+                <!-- Begin Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="/assets/img/logo.png" alt="logo">
+                </a>
+                <!-- Begin Search -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <!-- End Search -->
+                <!-- End Logo -->
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <!-- Begin Menu -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item m-2">
+                            <a class="nav-link" asp-action="CreateArticle" asp-controller="Member">Write a Article..</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link" asp-action="Index" asp-controller="Member">My Articles</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link btn btn-warning" asp-action="SignOut" asp-controller="Member">Sign Out</a>
+                        </li>
+                        <li class="nav-item dropdown m-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @User.Identity.Name
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Your Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Manage Membership</a></li>
+                                    <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- End Menu -->
+
+                </div>
+            </div>
+        </nav>
+    }
+    else
+    {
+        <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container">
+                <!-- Begin Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="/assets/img/logo.png" alt="logo">
+                </a>
+                <!-- End Logo -->
+                <!-- Begin Search -->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"></path></svg></span>
+                </form>
+                <!-- End Search -->
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <!-- Begin Menu -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item m-2">
+                            <a class="nav-link" href="index.html">AboutUs<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link" href="post.html">Membership</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link btn btn-warning" asp-action="SignUp" asp-controller="Home">Sign Up</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link btn btn-success" asp-action="SignIn" asp-controller="Home">Sign In</a>
+                        </li>
+                    </ul>
+                    <!-- End Menu -->
+
+                </div>
+            </div>
+        </nav>
+    }
+}
+

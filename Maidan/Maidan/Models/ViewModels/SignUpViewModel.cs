@@ -2,7 +2,7 @@
 
 namespace Maidan.Models.ViewModels
 {
-    public class AppUser
+    public class SignUpViewModel
     {
         [MinLength(8,ErrorMessage ="Username should be at least 8 characters!")]
         public string Username { get; set; }

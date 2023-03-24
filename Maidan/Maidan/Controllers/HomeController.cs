@@ -16,20 +16,6 @@ namespace Maidan.Controllers
         public HomeController(MaidanDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,SignInManager<IdentityUser> signInManager)
         {
             _context = context;
-            if (_context.Articles.ToList().Count == 0)
-            {
-                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 1, Title = "Lorem", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
-                _context.Articles.Add(new Article { AuthorId = 2, Title = "Ipsum", Content = "Lorem ipsum dolor" });
-                _context.SaveChanges();
-            }
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
@@ -57,7 +43,7 @@ namespace Maidan.Controllers
 
         [HttpPost]
         [Route("SignUp")]
-        public async Task<IActionResult> SignUp(AppUser appUser)
+        public async Task<IActionResult> SignUp(SignUpViewModel appUser)
         {
 
             var isUserExist = await _userManager.FindByEmailAsync(appUser.Email);
@@ -73,7 +59,7 @@ namespace Maidan.Controllers
                     if (resultRole.Succeeded)
                     {
                         TempData["Message"] = "Sign Up successfully!";
-                        return RedirectToAction("SignUp", "Home");
+                        return RedirectToAction("SignIn", "Home");
                     }
                 }
                 else

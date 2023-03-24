@@ -16,7 +16,7 @@ namespace Maidan.Models
         public int Id { get; set; }
 
         [ForeignKey("Author")]
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public string? Image { get; set; }

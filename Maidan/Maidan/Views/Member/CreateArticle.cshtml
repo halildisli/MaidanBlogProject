@@ -1,0 +1,21 @@
+﻿@model CreateArticleViewModel
+
+<form asp-action="CreateArticle" asp-controller="Member">
+    <div class="form-group">
+    <label asp-for="Title"></label>
+    <input asp-for="Title">
+    <span asp-validation-for="Title"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content"></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input type="text" asp-for="Image">
+        <span asp-validation-for="Image"></span>
+    </div>
+    <button type="submit">Makale Kaydet</button>
+</form>
