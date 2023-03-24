@@ -48,12 +48,17 @@ namespace Maidan.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CreateArticle(CreateArticleViewModel createArticle)
+        public async Task<IActionResult> CreateArticle(CreateArticleViewModel createArticle)
         {
             if (ModelState.IsValid)
             {
                 Article article = new Article();
-                article.AuthorId = _context.Authors.Where(a => a.UserName == User.Identity.Name).FirstOrDefault().Id;
+                string userName = User.Identity.Name;
+
+                var identityUser = await _userManager.FindByNameAsync(userName.ToUpper());
+
+
+                article.AuthorId = identityUser.Id;
                 article.Title = createArticle.Title;
                 article.Content = createArticle.Content;
                 article.Image = createArticle.Image;
