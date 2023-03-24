@@ -287,3 +287,8 @@ C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\ne
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

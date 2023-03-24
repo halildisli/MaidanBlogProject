@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
 namespace Maidan.Models
 {
-    public class MaidanDbContext : DbContext
+    public class MaidanDbContext : IdentityDbContext
     {
         public MaidanDbContext(DbContextOptions<MaidanDbContext> options) : base(options)
         {
@@ -14,14 +15,12 @@ namespace Maidan.Models
         public virtual DbSet<AuthorDetail> AuthorDetails { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder
-        //        .Entity<Comment>()
-        //        .HasOne(e => e.Author)
-        //        .WithOne(e => e.Articles)
-        //        .OnDelete(DeleteBehavior.ClientCascade);
-        //}
+        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
+    
     
 }
