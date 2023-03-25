@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Maidan.Areas.Admin.Models.ViewModels;
+using Maidan.Areas.Admin.ViewModels;
 using Maidan.Models;
-using Maidan.Models.ViewModels;
+using Maidan.ViewModels;
 
 namespace Maidan.Mapping
 {

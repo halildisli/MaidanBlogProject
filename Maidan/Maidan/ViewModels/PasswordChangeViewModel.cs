@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Maidan.Models.ViewModels
+namespace Maidan.ViewModels
 {
     public class PasswordChangeViewModel
     {

@@ -1,18 +1,11 @@
 ﻿using Maidan.Models;
-using Maidan.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Security.Cryptography;
-using Maidan.Models.AuthenticationModels;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Maidan.Areas.Admin.Models.ViewModels;
+using Maidan.ViewModels;
 
 namespace Maidan.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Build.Framework;
 
-namespace Maidan.Areas.Admin.Models.ViewModels
+namespace Maidan.Areas.Admin.ViewModels
 {
     public class TagViewModel
     {

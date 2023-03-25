@@ -1,6 +1,6 @@
-﻿namespace Maidan.Areas.Admin.Models.ViewModels
+﻿namespace Maidan.Areas.Admin.ViewModels
 {
-    public class SignInViewModel
+    public class AdminSignInViewModel
     {
         public string Username { get; set; }
         public string Password { get; set; }

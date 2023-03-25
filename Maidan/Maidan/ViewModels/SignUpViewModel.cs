@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Maidan.Models.ViewModels
+namespace Maidan.ViewModels
 {
     public class SignUpViewModel
     {
@@ -12,10 +12,10 @@ namespace Maidan.Models.ViewModels
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Required]
         public string Email { get; set; }
-        [DataType(DataType.Password,ErrorMessage = "Your password should be minimum eight characters, at least one uppercase letter, one lowercase letter and one number!")]
+        [DataType(DataType.Password, ErrorMessage = "Your password should be minimum eight characters, at least one uppercase letter, one lowercase letter and one number!")]
         [Required]
         public string Password { get; set; }
-        [DataType(DataType.Password,ErrorMessage = "Your password should be minimum eight characters, at least one uppercase letter, one lowercase letter and one number!")]
+        [DataType(DataType.Password, ErrorMessage = "Your password should be minimum eight characters, at least one uppercase letter, one lowercase letter and one number!")]
         [Compare("Password", ErrorMessage = "The Password and Confirm Password fields do not match!")]
         [Required]
         public string PasswordConfirm { get; set; }

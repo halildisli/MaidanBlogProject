@@ -1,5 +1,5 @@
-﻿using Maidan.Areas.Admin.Models.ViewModels;
-using Maidan.Models;
+﻿using Maidan.Models;
+using Maidan.Areas.Admin.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +25,7 @@ namespace Maidan.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(SignInViewModel viewModel)
+        public async Task<IActionResult> Index(AdminSignInViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {

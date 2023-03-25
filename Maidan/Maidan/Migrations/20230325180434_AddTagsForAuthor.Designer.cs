@@ -4,6 +4,7 @@ using Maidan.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maidan.Migrations
 {
     [DbContext(typeof(MaidanDbContext))]
-    partial class MaidanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230325180434_AddTagsForAuthor")]
+    partial class AddTagsForAuthor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace Maidan.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("ArticleTag", (string)null);
+                    b.ToTable("ArticleTag");
                 });
 
             modelBuilder.Entity("AuthorTag", b =>
@@ -49,7 +52,7 @@ namespace Maidan.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("AuthorTag", (string)null);
+                    b.ToTable("AuthorTag");
                 });
 
             modelBuilder.Entity("Maidan.Areas.Admin.ViewModels.UserViewModel", b =>
@@ -111,7 +114,7 @@ namespace Maidan.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserViewModel", (string)null);
+                    b.ToTable("UserViewModel");
                 });
 
             modelBuilder.Entity("Maidan.Models.Article", b =>
@@ -153,7 +156,7 @@ namespace Maidan.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Articles", (string)null);
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("Maidan.Models.Tag", b =>
@@ -173,7 +176,7 @@ namespace Maidan.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Maidan.ViewModels.ArticleViewModel", b =>
@@ -198,7 +201,7 @@ namespace Maidan.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ArticleViewModel", (string)null);
+                    b.ToTable("ArticleViewModel");
                 });
 
             modelBuilder.Entity("Maidan.ViewModels.MyProfileViewModel", b =>
@@ -264,7 +267,7 @@ namespace Maidan.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MyProfileViewModel", (string)null);
+                    b.ToTable("MyProfileViewModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

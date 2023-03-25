@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Maidan.Models.ViewModels
+namespace Maidan.ViewModels
 {
     public class MyProfileViewModel
     {
-        public string? Id { get; set; 
+        public string? Id
+        {
+            get; set;
         }
-        [MaxLength(30,ErrorMessage ="Username cannot be greater than 30 characters!")]
-        [MinLength(5,ErrorMessage ="Username cannot be greater than 30 characters!")]
+        [MaxLength(30, ErrorMessage = "Username cannot be greater than 30 characters!")]
+        [MinLength(5, ErrorMessage = "Username cannot be greater than 30 characters!")]
         [Required]
         public string? UserName { get; set; }
         [DataType(DataType.Password, ErrorMessage = "Your password should be minimum eight characters, at least one uppercase letter, one lowercase letter and one number!")]
@@ -17,7 +19,7 @@ namespace Maidan.Models.ViewModels
         [Required]
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
-        [MaxLength(30,ErrorMessage ="First Name cannot be greater than 30 characters!")]
+        [MaxLength(30, ErrorMessage = "First Name cannot be greater than 30 characters!")]
         public string? FirstName { get; set; }
         [MaxLength(30, ErrorMessage = "First Name cannot be greater than 30 characters!")]
         public string? LastName { get; set; }

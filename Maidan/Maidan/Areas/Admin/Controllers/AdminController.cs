@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Maidan.Areas.Admin.Models.ViewModels;
+using Maidan.Areas.Admin.ViewModels;
 using Maidan.Models;
-using Maidan.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace Maidan.Areas.Admin.Controllers

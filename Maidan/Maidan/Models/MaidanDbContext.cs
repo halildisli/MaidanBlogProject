@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
-using Maidan.Models.ViewModels;
-using Maidan.Areas.Admin.Models.ViewModels;
+using Maidan.ViewModels;
+using Maidan.Areas.Admin.ViewModels;
 
 namespace Maidan.Models
 {
@@ -22,18 +22,15 @@ namespace Maidan.Models
         {
             base.OnModelCreating(builder);
 
-            DummyRolesAdd(builder);
+            //DummyRolesAdd(builder);
         }
-        private static void DummyRolesAdd(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole() { Name = "admin", NormalizedName = "ADMIN", ConcurrencyStamp = "1" },
-                new IdentityRole() { Name = "user", NormalizedName = "USER", ConcurrencyStamp = "10" }
-                );
-        }
-        public DbSet<Maidan.Models.ViewModels.ArticleViewModel>? ArticleViewModel { get; set; }
-        public DbSet<Maidan.Models.ViewModels.MyProfileViewModel>? MyProfileViewModel { get; set; }
-        public DbSet<Maidan.Areas.Admin.Models.ViewModels.UserViewModel>? UserViewModel { get; set; }
+        //private static void DummyRolesAdd(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<IdentityRole>().HasData(
+        //        new IdentityRole() { Name = "admin", NormalizedName = "ADMIN", ConcurrencyStamp = "1" },
+        //        new IdentityRole() { Name = "user", NormalizedName = "USER", ConcurrencyStamp = "10" }
+        //        );
+        //}
     }
     
     

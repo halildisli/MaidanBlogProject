@@ -1,4 +1,4 @@
-﻿namespace Maidan.Models.AuthenticationModels
+﻿namespace Maidan.ViewModels
 {
     public class SignInViewModel
     {

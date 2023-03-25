@@ -1,6 +1,5 @@
 ﻿using Maidan.Models;
-using Maidan.Models.AuthenticationModels;
-using Maidan.Models.ViewModels;
+using Maidan.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

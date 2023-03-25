@@ -101,6 +101,10 @@
       "PackagePath": "staticwebassets\\images\\articleImages\\about-us.jpg"
     },
     {
+      "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\be4034bf-58a4-4529-9631-56463ff4aa0d.jpg",
+      "PackagePath": "staticwebassets\\images\\articleImages\\be4034bf-58a4-4529-9631-56463ff4aa0d.jpg"
+    },
+    {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\default-article-image.jpg",
       "PackagePath": "staticwebassets\\images\\articleImages\\default-article-image.jpg"
     },
