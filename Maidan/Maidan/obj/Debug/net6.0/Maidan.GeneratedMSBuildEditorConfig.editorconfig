@@ -20,12 +20,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWRkVGFnLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/DeleteUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRGVsZXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/ListTags.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTGlzdFRhZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTGlzdFVzZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Home/Index.cshtml]

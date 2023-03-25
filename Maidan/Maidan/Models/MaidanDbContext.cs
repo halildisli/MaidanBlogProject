@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 using Maidan.Models.ViewModels;
+using Maidan.Areas.Admin.Models.ViewModels;
 
 namespace Maidan.Models
 {
@@ -32,6 +33,7 @@ namespace Maidan.Models
         }
         public DbSet<Maidan.Models.ViewModels.ArticleViewModel>? ArticleViewModel { get; set; }
         public DbSet<Maidan.Models.ViewModels.MyProfileViewModel>? MyProfileViewModel { get; set; }
+        public DbSet<Maidan.Areas.Admin.Models.ViewModels.UserViewModel>? UserViewModel { get; set; }
     }
     
     
