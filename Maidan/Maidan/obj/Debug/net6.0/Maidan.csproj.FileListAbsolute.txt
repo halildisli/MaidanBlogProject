@@ -295,3 +295,10 @@ C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\ne
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\AutoMapper.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.Razor.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

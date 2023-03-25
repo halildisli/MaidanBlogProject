@@ -10,6 +10,7 @@ using Maidan.Models.AuthenticationModels;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Maidan.Controllers
 {
@@ -22,13 +23,15 @@ namespace Maidan.Controllers
         private readonly SignInManager<Author> _signInManager;
 
         private readonly IMapper _mapper;
-        public MemberController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager, IMapper mapper)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public MemberController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager, IMapper mapper,IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _mapper = mapper;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         //public IActionResult Index(int id)
@@ -64,8 +67,9 @@ namespace Maidan.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateArticle(ArticleViewModel createArticle)
+        public async Task<IActionResult> CreateArticle(ArticleViewModel createArticle,IFormFile photo)
         {
+            PhotoControl(photo);
             if (ModelState.IsValid)
             {
                 Article article = new Article();
@@ -77,17 +81,53 @@ namespace Maidan.Controllers
                 article.AuthorId = identityUser.Id;
                 article.Title = createArticle.Title;
                 article.Content = createArticle.Content;
-                article.Image = createArticle.Image;
+                article.Image = AddPhoto(photo);
                 _context.Articles.Add(article);
                 _context.SaveChanges();
             }
             return View();
         }
+
+        private void PhotoControl(IFormFile photo)
+        {
+            string[] photoExtensions = { ".jpg", ".png", ".jpeg" };
+            if (photo != null)
+            {
+                string ext = Path.GetExtension(photo.FileName);
+                if (!photoExtensions.Contains(ext))
+                {
+                    ModelState.AddModelError("formFile", "Extension must be .jpg, .jpeg, .png!");
+                }
+                else if (photo.Length > 1000 * 1000 * 1)//Bir MB'a karşılık geliyor.
+                {
+                    ModelState.AddModelError("formFile", "Maximum file size 1 MB");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("formFile", "Photo is required!");
+            }
+        }
+        private string? AddPhoto(IFormFile photo)
+        {
+            string ext = Path.GetExtension(photo.FileName);
+            string photoName = Guid.NewGuid() + ext;
+            string photoPath = Path.Combine(_webHostEnvironment.WebRootPath, "images", "articleImages", photoName);
+            using (var stream = new FileStream(photoPath, FileMode.Create))
+            {
+                photo.CopyTo(stream);
+            }
+            return photoName;
+        }
+
+
+
+
         [HttpGet]
         public IActionResult UpdateArticle(int id)
         {
             Article foundedArticle = _context.Articles.Find(id);
-            ArticleViewModel articleViewModel = new ArticleViewModel() { Id = foundedArticle.Id, Title = foundedArticle.Title, Content = foundedArticle.Content, Image = foundedArticle.Image };
+            ArticleViewModel articleViewModel = new ArticleViewModel() { Id = foundedArticle.Id, Title = foundedArticle.Title, Content = foundedArticle.Content };
 
             return View(articleViewModel);
         }
@@ -100,7 +140,6 @@ namespace Maidan.Controllers
                 toBeUpdated.UpdateDate = DateTime.Now;
                 toBeUpdated.Title = articleViewModel.Title;
                 toBeUpdated.Content = articleViewModel.Content;
-                toBeUpdated.Image = articleViewModel.Image;
                 _context.Articles.Update(toBeUpdated);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Member");
@@ -111,7 +150,7 @@ namespace Maidan.Controllers
         public IActionResult DeleteArticle(int id)
         {
             Article foundedArticle = _context.Articles.Find(id);
-            ArticleViewModel articleViewModel = new ArticleViewModel() { Id = foundedArticle.Id, Title = foundedArticle.Title, Content = foundedArticle.Content, Image = foundedArticle.Image };
+            ArticleViewModel articleViewModel = new ArticleViewModel() { Id = foundedArticle.Id, Title = foundedArticle.Title, Content = foundedArticle.Content};
 
             return View(articleViewModel);
         }

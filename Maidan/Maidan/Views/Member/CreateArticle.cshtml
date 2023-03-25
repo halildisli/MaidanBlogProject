@@ -1,10 +1,10 @@
 ﻿@model ArticleViewModel
 
-<form asp-action="CreateArticle" asp-controller="Member">
+<form asp-action="CreateArticle" asp-controller="Member" method="post" enctype="multipart/form-data">
     <div class="form-group">
-    <label asp-for="Title"></label>
-    <input asp-for="Title">
-    <span asp-validation-for="Title"></span>
+        <label asp-for="Title"></label>
+        <input asp-for="Title">
+        <span asp-validation-for="Title"></span>
 
     </div>
     <div class="form-group">
@@ -13,9 +13,8 @@
         <span asp-validation-for="Content"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Image"></label>
-        <input type="text" asp-for="Image">
-        <span asp-validation-for="Image"></span>
+        <label for="photo" class="control-label">Choose image:</label>
+        <input id="photo" name="photo" type="file" class="form-control" />
     </div>
-    <button type="submit">Makale Kaydet</button>
+    <button type="submit" value="Add Article" class="btn btn-success"></button>
 </form>
