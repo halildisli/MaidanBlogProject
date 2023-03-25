@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Cryptography;
 using Maidan.Models.AuthenticationModels;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Maidan.Controllers
 {
@@ -18,12 +20,15 @@ namespace Maidan.Controllers
         private readonly UserManager<Author> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<Author> _signInManager;
-        public MemberController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager)
+
+        private readonly IMapper _mapper;
+        public MemberController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager, IMapper mapper)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _mapper = mapper;
         }
 
         //public IActionResult Index(int id)
@@ -50,6 +55,7 @@ namespace Maidan.Controllers
         [HttpGet]
         public async Task<IActionResult> SignOut()
         {
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]
@@ -117,6 +123,53 @@ namespace Maidan.Controllers
             _context.Articles.Remove(toBeDeleted);
             _context.SaveChanges();
             return RedirectToAction("Index", "Member");
+        }
+        [HttpGet]
+        public async Task<IActionResult> MyProfile()
+        {
+            var userName = User.Identity.Name;
+            var user = await _userManager.FindByNameAsync(userName);
+            MyProfileViewModel viewModel = _mapper.Map<MyProfileViewModel>(user);
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> MyProfile(MyProfileViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var author = await _userManager.FindByIdAsync(viewModel.Id);
+                var userNameExist = await _userManager.FindByNameAsync(viewModel.UserName.ToUpper());
+                if (userNameExist==null)
+                {
+                    ModelState.AddModelError(string.Empty, "This username already exists in the database. Please try another username.");
+                    author.UserName = viewModel.UserName;
+                }
+                var emailExist = await _userManager.FindByEmailAsync(viewModel.Email.ToUpper());
+                if (emailExist == null)
+                {
+                    ModelState.AddModelError(string.Empty, "This e-mail already exists in the database. Please try another e-mail.");
+                    author.Email = viewModel.Email;
+                }
+                author.PhoneNumber = viewModel.PhoneNumber;
+                author.FirstName = viewModel.FirstName;
+                author.LastName = viewModel.LastName;
+                author.LastName = viewModel.LastName;
+                author.Photo = viewModel.Photo;
+                author.Bio = viewModel.Bio;
+                author.SubDomain = viewModel.SubDomain;
+                author.GithubUrl = viewModel.GithubUrl;
+                author.LinkedInUrl = viewModel.GithubUrl;
+                author.GithubUrl = viewModel.LinkedInUrl;
+                author.TwitterUrl = viewModel.TwitterUrl;
+                author.InstagramUrl = viewModel.InstagramUrl;
+                author.WebsiteUrl = viewModel.WebsiteUrl;
+                var result = await _userManager.UpdateAsync(author);
+                TempData["Message"] = "Update has been successfully!";
+                return View();
+            }
+            TempData["Message"] = "Update failed!";
+            return View();
+
         }
 
 

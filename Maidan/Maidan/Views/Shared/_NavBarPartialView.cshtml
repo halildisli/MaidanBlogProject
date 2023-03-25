@@ -34,8 +34,8 @@
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     @User.Identity.Name
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Your Profile</a></li>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-action="MyProfile" asp-controller="Member">Your Profile</a></li>
                                     <li><a class="dropdown-item" href="#">Manage Membership</a></li>
                                     <li><a class="dropdown-item" href="#">Account Settings</a></li>
                                 </ul>

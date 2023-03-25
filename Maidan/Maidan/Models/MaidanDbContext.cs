@@ -31,6 +31,7 @@ namespace Maidan.Models
                 );
         }
         public DbSet<Maidan.Models.ViewModels.ArticleViewModel>? ArticleViewModel { get; set; }
+        public DbSet<Maidan.Models.ViewModels.MyProfileViewModel>? MyProfileViewModel { get; set; }
     }
     
     

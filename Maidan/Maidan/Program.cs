@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using System.Reflection;
 
 namespace Maidan
 {
@@ -28,6 +28,7 @@ namespace Maidan
             //    }
             //    );
 
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
             var app = builder.Build();
