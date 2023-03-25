@@ -10,5 +10,6 @@ namespace Maidan.Models.ViewModels
         public string Title { get; set; }
         [Required]
         public string Content { get; set; }
+        public int TagId { get; set; }
     }
 }

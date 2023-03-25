@@ -21,7 +21,5 @@ namespace Maidan.Models
         public string? InstagramUrl { get; set; }
         public string? WebsiteUrl { get; set; }
         public List<Article> Articles { get; set; }
-
-
     }
 }

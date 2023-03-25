@@ -18,6 +18,13 @@
                 <label for="photo" class="control-label">Choose image:</label>
                 <input id="photo" name="photo" type="file" class="form-control" />
             </div>
+            <div>
+                <label asp-for="TagId" class="mb-1">Tags :</label>
+                <select class="form-select mb-3" aria-label="Default select example" asp-for="TagId" asp-items="@ViewBag.Tags">
+                    <option value="">Choose Tag</option>
+                </select>
+                <span class="text-danger" asp-validation-for="TagId"></span>
+            </div>
             <button type="submit" value="Add Article" class="btn btn-success"></button>
         </form>
     </div>

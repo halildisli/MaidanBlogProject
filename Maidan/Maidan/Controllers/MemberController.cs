@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Maidan.Areas.Admin.Models.ViewModels;
 
 namespace Maidan.Controllers
 {
@@ -64,6 +66,13 @@ namespace Maidan.Controllers
         [HttpGet]
         public IActionResult CreateArticle()
         {
+            var tagList = new List<Tag>();
+            foreach (Tag item in _context.Tags.ToList())
+            {
+                tagList.Add(item);
+            }
+
+            ViewBag.Tags = new SelectList(tagList, "Id", "Name");
             return View();
         }
         [HttpPost]
@@ -82,6 +91,8 @@ namespace Maidan.Controllers
                 article.Title = createArticle.Title;
                 article.Content = createArticle.Content;
                 article.Image = AddPhoto(photo);
+                Tag tag = _context.Tags.Find(createArticle.TagId);
+                article.Tags.Add(tag);
                 _context.Articles.Add(article);
                 _context.SaveChanges();
             }
