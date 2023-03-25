@@ -89,6 +89,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\92357175-e016-4b79-b834-ba3234822349.jpg",
+      "PackagePath": "staticwebassets\\images\\articleImages\\92357175-e016-4b79-b834-ba3234822349.jpg"
+    },
+    {
+      "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\about-us.jpg",
+      "PackagePath": "staticwebassets\\images\\articleImages\\about-us.jpg"
+    },
+    {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\default-article-image.jpg",
       "PackagePath": "staticwebassets\\images\\articleImages\\default-article-image.jpg"
     },

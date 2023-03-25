@@ -33,6 +33,31 @@ namespace Maidan.Controllers
         {
             return View();
         }
+        public IActionResult Membership()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ListTags()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ListContents(int id)
+        {
+            var tag = _context.Tags.Where(t => t.Id == id).FirstOrDefault();
+            if (tag!=null)
+            {
+                var articles=_context.Articles.Where(a => a.Tags.Contains(tag)).ToList();
+                if (articles!=null)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction(nameof(ListTags));
+        }
 
         [HttpGet]
         [Route("SignUp")]
@@ -102,5 +127,6 @@ namespace Maidan.Controllers
             return View();
 
         }
+        
     }
 }

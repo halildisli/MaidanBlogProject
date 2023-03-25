@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Membership";
+}
+
+<h1 class="text-center my-2">Ma<span class="text-warning">i</span>dan</h1>
+<hr />
+<div class="container text-center my-2">
+    <div class="col-md-6 offset-3 my-2">
+        <div class="row my-2">
+            <h1>Get unlimited access to everything on Ma<span class="text-warning">i</span>dan.</h1>
+        </div>
+        <div class="row my-2">
+            <h4>Plans starting at less than $1/week. Cancel anytime.</h4>
+        </div>
+        <div class="row my-2">
+            <ul class="list-unstyled">
+                <li><span class="text-success font-weight-bold">&check; </span>No ads</li>
+                <li><span class="text-success font-weight-bold">&check; </span>Support quality writing</li>
+                <li><span class="text-success font-weight-bold">&check; </span>Access on any device</li>
+                <li><span class="text-success font-weight-bold">&check; </span>Read offline with the Ma<span class="text-warning">i</span>dan app</li>
+                <li><span class="text-success font-weight-bold">&check; </span>Mastodon account</li>
+            </ul>
+        </div>
+        <div class="row my-2">
+            <div class="card m-2 col-5">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly</h5>
+                    <p class="card-text">$5 USD / Month</p>
+                    <a asp-action="Premium" asp-controller="Home" asp-route-select="monthly" class="btn btn-success rounded-pill">Select</a>
+                </div>
+            </div>
+            <div class="card m-2 col-5">
+                <div class="card-body">
+                    <h5 class="card-title">Yearly</h5>
+                    <p class="card-text">$50 USD / Yearly</p>
+                    <a asp-action="Premium" asp-controller="Home" asp-route-select="yearly" class="btn btn-success rounded-pill">Select</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
