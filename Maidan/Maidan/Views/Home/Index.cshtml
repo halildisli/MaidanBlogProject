@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Article>
+﻿@model List<Article>
 @{
     ViewData["Title"] = "maidan.";
-    var lastSixArticles = Model.OrderByDescending(a => a.ReleaseDate).Take(6);
+    //List<Article> lastSixArticles = Model.OrderBy(a => a.ReleaseDate).Take(4).ToList();
+    List<Article> lastSixArticles = null;
 }
 <!-- Begin Site Title
 ================================================== -->
@@ -22,7 +23,7 @@
     </div>
     <div class="card-columns listfeaturedtag">
         @{
-            if (lastSixArticles!=null)
+            if (lastSixArticles != null)
             {
                 foreach (Article article in lastSixArticles)
                 {
@@ -83,7 +84,7 @@
     </div>
     <div class="card-columns listrecent">
         @{
-            if (Model!=null)
+            if (Model != null)
             {
                 foreach (Article article in Model)
                 {

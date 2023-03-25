@@ -24,10 +24,8 @@ namespace Maidan.Controllers
         public IActionResult Index()
         {
             var articles = _context.Articles.ToList();
-
             return View(articles);
         }
-       
 
         public IActionResult AboutUs()
         {
