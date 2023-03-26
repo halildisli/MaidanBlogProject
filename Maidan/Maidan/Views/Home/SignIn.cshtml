@@ -9,22 +9,31 @@
         </div>
     }
 }
-<div class="row">
-    <div class="col-md-4 offset-4">
-    <form class="form-signin text-center" method="post">
-        <img class="mb-4" src="/assets/img/logo.png" alt="" width="50" height="50">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" asp-for="Email">
-        <label for="inputPassword" class="sr-only">Pa ssword</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" asp-for="Password">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me" asp-for="RememberMe"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" asp-controller="Home" asp-action="SignIn">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">© 2023-2024</p>
-    </form>
-</div>
+<div class="row d-flex justify-content-center align-items-center m-4">
+    <div class="col-md-4">
+        <form class="form-signin text-center" method="post">
+            <div class="m-3">
+                <img class="mb-4" src="/assets/img/logo.png" alt="" width="50" height="50">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            </div>
+            <div class="m-3">
+                <label asp-for="Email" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" asp-for="Email">
+            </div>
+            <div class="m-3">
+                <label asp-for="Password" class="sr-only">Pa ssword</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" asp-for="Password">
+            </div>
+            <div class="checkbox m-3">
+                <label>
+                    <input type="checkbox" value="remember-me" asp-for="RememberMe"> Remember me
+                </label>
+            </div>
+            <div class="m-3">
+                <button class="btn btn-lg btn-success btn-block" type="submit" asp-controller="Home" asp-action="SignIn">Sign in</button>
+                <p class="mt-5 mb-3 text-muted">© 2022-2023</p>
+            </div>
+            <div asp-validation-summary="ModelOnly"></div>
+        </form>
+    </div>
 </div>

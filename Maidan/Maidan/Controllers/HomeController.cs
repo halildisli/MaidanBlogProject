@@ -74,19 +74,21 @@ namespace Maidan.Controllers
         [HttpGet]
         public IActionResult ListTags()
         {
-            return View();
+            List<Tag> tags = _context.Tags.ToList();
+            return View(tags);
         }
 
         [HttpGet]
-        public IActionResult ListContents(int id)
+        public IActionResult TagArticles(int id)
         {
             var tag = _context.Tags.Where(t => t.Id == id).FirstOrDefault();
+            ViewBag.Tag = tag.Name;
             if (tag!=null)
             {
                 var articles=_context.Articles.Where(a => a.Tags.Contains(tag)).ToList();
                 if (articles!=null)
                 {
-                    return View();
+                    return View(articles);
                 }
             }
             return RedirectToAction(nameof(ListTags));

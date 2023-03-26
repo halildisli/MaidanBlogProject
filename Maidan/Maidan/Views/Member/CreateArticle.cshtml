@@ -67,8 +67,15 @@
 
 
 
-
-<div class="container">
+<div class="text-center bg-light my-3">
+    <h1>
+        Let's Start Writing
+    </h1>
+</div>
+<div class="my-3">
+    <hr />
+</div>
+<div class="container my-3">
     <div class="row">
         <form asp-action="CreateArticle" asp-controller="Member" method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -78,7 +85,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Content">Content</label>
-                <textarea asp-for="Content" class="form-control" id="content" rows="3"></textarea>
+                <textarea asp-for="Content" class="form-control overflow-auto" id="content" rows="10"></textarea>
                 <span asp-validation-for="Content"></span>
             </div>
             <div class="form-group">

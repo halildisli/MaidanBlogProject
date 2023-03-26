@@ -1,0 +1,26 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+         <!-- Begin AlertBar
+            ================================================== -->
+            <div class="alertbar">
+                <div class="container text-center">
+                    <img src="assets/img/logo.png" alt=""> &nbsp; Never miss a <b>story</b> from us, get weekly updates in your inbox. <a asp-action="Membership" asp-controller="Home" class="btn subscribe">Get Updates</a>
+                </div>
+            </div>
+            <!-- End AlertBar
+            ================================================== -->
+    }
+    else
+    {
+         <!-- Begin AlertBar
+            ================================================== -->
+            <div class="alertbar">
+                <div class="container text-center">
+                <img src="assets/img/logo.png" alt=""> &nbsp; Do you want to join us? Let's go to the <b>ma<span class="text-warning">i</span>dan.</b> <a asp-action="SignUp" asp-controller="Home" class="btn subscribe">Join Ma<span class="text-warning">i</span>dan</a>
+                </div>
+            </div>
+            <!-- End AlertBar
+            ================================================== -->
+    }
+}

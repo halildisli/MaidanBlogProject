@@ -34,7 +34,15 @@ namespace Maidan.Controllers
         //    var articlesOfAuthor = _context.Articles.Where(a => a.AuthorId == id).ToList();
         //    return View(articlesOfAuthor);
         //}
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index()
+        {
+            //List<Tag> tags=_context.Authors.Where()
+            //var identityUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            //var articlesForUser = _context.Articles.Where(a => a.AuthorId == identityUser.Id).ToList();
+            var articles = _context.Articles.ToList();
+            return View(articles);
+        }
+        public async Task<IActionResult> MyArticles(int id)
         {
             var identityUser = await _userManager.FindByNameAsync(User.Identity.Name);
             //List<Tag> tags=_context.Authors.Where()

@@ -1,9 +1,7 @@
 ﻿@model List<Article>
-@{
-    ViewData["Title"] = "maidan.";
-    List<Article> Articles = Model.OrderByDescending(a => a.NumberOfReads).Take(100).ToList();
-    List<Author> authors = ViewBag.Authors;
-}
+
+
+
 <!-- Begin Site Title
 ================================================== -->
 
@@ -30,13 +28,13 @@
 <!-- End Site Title
 ================================================== -->
 
-<div class="container my-2">
-    <h2>Trending on Ma<span style="color:#FFC017">i</span>dan.</h2>
+<div class="container my-4 text-center">
+    <h1>Articles of&nbsp "@ViewBag.Tag" &nbspon Ma<span style="color:#FFC017">i</span>dan.</h1>
     <hr />
 </div>
-<div class="container my-2">
+<div class="container my-4">
     @{
-        foreach (var item in Articles)
+        foreach (var item in Model)
         {
             <div class="card my-4">
                 <div class="card-header">
@@ -76,9 +74,20 @@
                 </div>
             </div>
         }
+        if (Model.Count==0)
+        {
+            <div class="m-5 text-center">
+                <h2 class="my-3">There is no content on this topic yet.</h2>
+                <h4 class="my-3">How about you write the <b>first</b> content?</h4>
+                <a class="btn rounded-pill my-3" asp-action="SignUp" style="background-color:#FFC017">Write an Article</a>
+            </div>
+        }
+        else
+        {
+            <div class="row my-4 text-center">
+                <div><a class="btn btn-warning btn-block rounded-pill" asp-action="SignUp">Do you want see a more articles? Let's join us!'</a></div>
+            </div>
+        }
     }
-    <div class="row my-4 text-center">
-        <div><a class="btn btn-warning btn-block rounded-pill" asp-action="SignUp">Do you want see a more articles? Let's join us!'</a></div>
-    </div>
+    
 </div>
-

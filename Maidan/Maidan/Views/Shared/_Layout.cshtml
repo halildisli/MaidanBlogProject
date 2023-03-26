@@ -10,7 +10,7 @@
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     @await RenderSectionAsync("Css", required: false)
-    
+
     <!-- Dışarıdan alınan -->
     <link rel="icon" href="/assets/img/favicon.ico" asp-append-version="true">
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
@@ -37,6 +37,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <partial name="_AlertPartialView.cshtml"></partial>           
         </main>
     </div>
 </body>
@@ -51,7 +52,7 @@
             Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
         </p>
     </div>
-    
+
 </footer>
 <!-- End Footer
 ================================================== -->

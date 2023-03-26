@@ -4,39 +4,45 @@
     ViewData["Title"] = "ListTags";
 }
 
-<h1>ListTags</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Articles)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="row m-4 text-center">
+    <h1>Tags List</h1>
+    <hr />
+</div>
+<div class="row m-4">
+    <table class="table table-hover">
+        <thead class="thead-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Articles.Count)
-                </td>
-                <td>
-                    <a asp-action="ListContents" asp-route-id="@item.Id">List Contents</a>
-                </td>
+                <th class="table-dark">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="table-dark">
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th class="table-dark">
+                    @Html.DisplayNameFor(model => model.Articles)
+                </th>
+                <th class="table-dark"></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articles.ToList().Count)
+                    </td>
+                    <td>
+                        <a asp-action="TagArticles" asp-route-id="@item.Id" class="btn btn-success rounded-pill">List Contents</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
