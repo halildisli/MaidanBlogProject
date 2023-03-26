@@ -59,17 +59,21 @@ namespace Maidan.Controllers
         [HttpGet]
         public IActionResult CreateArticle()
         {
-            var tagList = new List<Tag>();
+            var tagList = new List<SelectListItem>();
             foreach (Tag item in _context.Tags.ToList())
             {
-                tagList.Add(item);
+                tagList.Add(new SelectListItem 
+                {
+                    Text=item.Name,
+                    Value=item.Id.ToString()
+                });
             }
 
-            ViewBag.Tags = new SelectList(tagList, "Id", "Name");
+            ViewBag.Tags = tagList;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateArticle(ArticleViewModel createArticle,IFormFile photo)
+        public async Task<IActionResult> CreateArticle(ArticleViewModel createArticle,IFormFile photo,List<string> TagsList)
         {
             PhotoControl(photo);
             if (ModelState.IsValid)
@@ -84,8 +88,19 @@ namespace Maidan.Controllers
                 article.Title = createArticle.Title;
                 article.Content = createArticle.Content;
                 article.Image = AddPhoto(photo);
-                Tag tag = _context.Tags.Find(createArticle.TagId);
-                article.Tags.Add(tag);
+                foreach (string tagIdStr in TagsList)
+                {
+                    int tagId = Convert.ToInt32(tagIdStr);
+                    Tag tag = _context.Tags.Where(t => t.Id == tagId).FirstOrDefault();
+                    if (tag!=null)
+                    {
+                        Tag notExistTag = article.Tags.Where(t => t.Id == tag.Id).FirstOrDefault();
+                        if (notExistTag==null)
+                        {
+                            article.Tags.Add(tag);
+                        }
+                    }
+                }
                 _context.Articles.Add(article);
                 _context.SaveChanges();
             }
@@ -170,13 +185,24 @@ namespace Maidan.Controllers
         [HttpGet]
         public async Task<IActionResult> MyProfile()
         {
+            var tagList = new List<SelectListItem>();
+            foreach (Tag item in _context.Tags.ToList())
+            {
+                tagList.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                });
+            }
+
+            ViewBag.Tags = tagList;
             var userName = User.Identity.Name;
             var user = await _userManager.FindByNameAsync(userName);
             MyProfileViewModel viewModel = _mapper.Map<MyProfileViewModel>(user);
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> MyProfile(MyProfileViewModel viewModel)
+        public async Task<IActionResult> MyProfile(MyProfileViewModel viewModel,List<string> TagsList)
         {
             if (ModelState.IsValid)
             {
@@ -206,6 +232,19 @@ namespace Maidan.Controllers
                 author.TwitterUrl = viewModel.TwitterUrl;
                 author.InstagramUrl = viewModel.InstagramUrl;
                 author.WebsiteUrl = viewModel.WebsiteUrl;
+                foreach (string tagIdStr in TagsList)
+                {
+                    int tagId = Convert.ToInt32(tagIdStr);
+                    Tag tag = _context.Tags.Where(t => t.Id == tagId).FirstOrDefault();
+                    if (tag != null)
+                    {
+                        Tag notExistTag = author.Tags.Where(t => t.Id == tag.Id).FirstOrDefault();
+                        if (notExistTag == null)
+                        {
+                            author.Tags.Add(tag);
+                        }
+                    }
+                }
                 var result = await _userManager.UpdateAsync(author);
                 TempData["Message"] = "Update has been successfully!";
                 return View();

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "L5pBKEj6kCDPk9SNS6BIYC1iryl6+YevhuQ1s1m3LMI=",
+  "Hash": "6635WEnfg+k1mm9IgkXSDeEvRuxJZ3V1Boi/0AP+ZOU=",
   "Source": "Maidan",
   "BasePath": "_content/Maidan",
   "Mode": "Default",
@@ -374,6 +374,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\mediumish.js"
     },
     {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\css\\select2.min.css",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "css/select2.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\select2.min.css"
+    },
+    {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\css\\site.css",
       "SourceId": "Maidan",
       "SourceType": "Discovered",
@@ -406,6 +423,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\260fe2b8-6965-43be-9d80-fb6bac1f31ba.jpg",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "images/articleImages/260fe2b8-6965-43be-9d80-fb6bac1f31ba.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\articleImages\\260fe2b8-6965-43be-9d80-fb6bac1f31ba.jpg"
     },
     {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\92357175-e016-4b79-b834-ba3234822349.jpg",
@@ -508,6 +542,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\authorImages\\default-author-image.png"
+    },
+    {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\js\\select2.full.js",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "js/select2.full.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\select2.full.js"
     },
     {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\js\\site.js",

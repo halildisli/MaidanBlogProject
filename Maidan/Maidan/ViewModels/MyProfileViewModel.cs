@@ -1,9 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Maidan.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Maidan.ViewModels
 {
     public class MyProfileViewModel
     {
+        public MyProfileViewModel()
+        {
+            Tags = new List<Tag>();
+        }
         public string? Id
         {
             get; set;
@@ -39,5 +44,6 @@ namespace Maidan.ViewModels
         public string? InstagramUrl { get; set; }
         [MaxLength(100, ErrorMessage = "Your Website-address cannot be greater than 100 characters!")]
         public string? WebsiteUrl { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

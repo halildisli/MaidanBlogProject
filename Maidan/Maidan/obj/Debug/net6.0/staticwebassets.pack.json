@@ -81,12 +81,20 @@
       "PackagePath": "staticwebassets\\assets\\js\\mediumish.js"
     },
     {
+      "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\css\\select2.min.css"
+    },
+    {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\260fe2b8-6965-43be-9d80-fb6bac1f31ba.jpg",
+      "PackagePath": "staticwebassets\\images\\articleImages\\260fe2b8-6965-43be-9d80-fb6bac1f31ba.jpg"
     },
     {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\92357175-e016-4b79-b834-ba3234822349.jpg",
@@ -111,6 +119,10 @@
     {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\authorImages\\default-author-image.png",
       "PackagePath": "staticwebassets\\images\\authorImages\\default-author-image.png"
+    },
+    {
+      "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\js\\select2.full.js",
+      "PackagePath": "staticwebassets\\js\\select2.full.js"
     },
     {
       "Id": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\js\\site.js",

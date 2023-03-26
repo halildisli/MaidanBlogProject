@@ -1,4 +1,59 @@
 ﻿@model MyProfileViewModel
+<style>
+    #tags {
+        padding: 0 20px
+    }
+
+        #tags:last-child {
+            border-bottom: 1px solid #BBB;
+        }
+
+        #tags > input {
+            display: none;
+        }
+
+        #tags i {
+            display: inline-block;
+            float: right;
+            padding: 2px;
+            width: 40px;
+            height: 20px;
+            border-radius: 13px;
+            vertical-align: middle;
+            -webkit-transition: .25s .09s;
+            transition: .25s .09s;
+            position: relative;
+            background: #d8d9db;
+            box-sizing: initial;
+        }
+
+            #tags i:after {
+                content: " ";
+                display: block;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #fff;
+                position: absolute;
+                left: 2px;
+                -webkit-transition: .25s;
+                transition: .25s;
+            }
+
+        #tags > input:checked + i {
+            background: #4bd865;
+        }
+
+            #tags > input:checked + i:after {
+                -webkit-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+
+        #tags:hover {
+            cursor: pointer;
+        }
+</style>
+
 
 @{
     ViewData["Title"] = "MyProfile";
@@ -93,6 +148,17 @@
                 <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label id="tags" class="mb-1">
+                    <span style="padding-right:10px">Choose All / Clear</span>
+                    <input type="checkbox" id="chooseAll" /><i></i>
+                </label>
+                <select name="TagsList"
+                        id="select2"
+                        multiple="multiple"
+                        class="form-control"
+                        asp-items="ViewBag.Tags"></select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save Changes" class="btn btn-primary" />
             </div>
         </form>
@@ -102,6 +168,24 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    $(function () {
+        //select2 eklentimizin tanımı
+        $('#select2').select2();
+        //hepsiniSec kodlarımız
+        $("#chooseAll").on("click", function () {
+            if ($(this).is(':checked')) {
+                $("#select2 > option").prop("selected", "selected");
+                $("#select2").trigger("change");
+            }
+            else {
+                $("#select2 > option").removeAttr("selected");
+                $("#select2").trigger("change");
+            }
+        });
+    });
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
