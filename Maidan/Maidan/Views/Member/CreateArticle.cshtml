@@ -58,22 +58,31 @@
     </style>
 }
 
+
+
+
+
+
+
+
+
+
+
 <div class="container">
     <div class="row">
         <form asp-action="CreateArticle" asp-controller="Member" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label asp-for="Title"></label>
-                <input asp-for="Title">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" type="text" class="form-control" id="title" placeholder="Title">
                 <span asp-validation-for="Title"></span>
-
             </div>
             <div class="form-group">
-                <label asp-for="Content"></label>
-                <textarea asp-for="Content"></textarea>
+                <label asp-for="Content">Content</label>
+                <textarea asp-for="Content" class="form-control" id="content" rows="3"></textarea>
                 <span asp-validation-for="Content"></span>
             </div>
             <div class="form-group">
-                <label for="photo" class="control-label">Choose image:</label>
+                <label for="photo" class="control-label">Choose post's image:</label>
                 <input id="photo" name="photo" type="file" class="form-control" />
             </div>
             <div class="form-group">
@@ -87,7 +96,9 @@
                         class="form-control"
                         asp-items="ViewBag.Tags"></select>
             </div>
-            <input type="submit" value="Add Article" class="btn btn-success my-2">
+            <div class="form-group">
+                <input type="submit" value="Add Article" class="btn btn-success my-2">
+            </div>
         </form>
     </div>
 </div>

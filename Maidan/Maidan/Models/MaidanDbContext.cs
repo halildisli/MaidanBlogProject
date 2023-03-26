@@ -24,9 +24,6 @@ namespace Maidan.Models
 
             //DummyRolesAdd(builder);
         }
-
-        
-        public DbSet<Maidan.ViewModels.MyProfileViewModel>? MyProfileViewModel { get; set; }
         //private static void DummyRolesAdd(ModelBuilder modelBuilder)
         //{
         //    modelBuilder.Entity<IdentityRole>().HasData(
