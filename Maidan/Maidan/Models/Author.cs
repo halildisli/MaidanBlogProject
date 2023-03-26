@@ -10,6 +10,7 @@ namespace Maidan.Models
         {
             Articles = new List<Article>();
             Tags = new List<Tag>();
+            MembershipDate = DateTime.Now;
         }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -21,6 +22,7 @@ namespace Maidan.Models
         public string? TwitterUrl { get; set; }
         public string? InstagramUrl { get; set; }
         public string? WebsiteUrl { get; set; }
+        public DateTime? MembershipDate { get; set; }
         public List<Article> Articles { get; set; }
         public List<Tag> Tags { get; set; }
     }

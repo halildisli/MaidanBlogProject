@@ -4,6 +4,7 @@ using Maidan.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maidan.Migrations
 {
     [DbContext(typeof(MaidanDbContext))]
-    partial class MaidanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230326005414_AddNumberOfReadsForArticle")]
+    partial class AddNumberOfReadsForArticle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -344,9 +347,6 @@ namespace Maidan.Migrations
 
                     b.Property<string>("LinkedInUrl")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("MembershipDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");

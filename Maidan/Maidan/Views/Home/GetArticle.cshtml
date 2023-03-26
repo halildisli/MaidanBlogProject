@@ -1,0 +1,67 @@
+﻿@model Article
+@{
+    Author author = ViewBag.Author;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="rounded-circle" src="~/images/authorImages/@{
+                if (Model.Image=="")
+            {
+                                            @("default-author-image.png")
+;
+            }
+            else
+                {
+                                        @Model.Image
+;
+                }
+            }" />
+        </div>
+        <div class="col-md-6 text-center">
+            <span>
+                @{
+                    if (author != null)
+                    {
+                        @author.UserName
+                    }
+                }
+            </span>
+            <br />
+@*            <span>
+                @{
+                    if (author.MembershipDate != null)
+                    {
+                        @author.MembershipDate
+
+                    }
+                }
+            </span>*@
+            <br />
+            @*<span>Number Of Articles : @author.Articles.Count.ToString()</span>*@
+        </div>
+    </div>
+    <div class="row">
+        <h1>@Model.Title</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <img src="/images/articleImages/@Model.Image" />
+        </div>
+    </div>
+    <div class="row">
+        <p>@Model.Content</p>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                @{
+                    foreach (Tag item in Model.Tags.ToList())
+                    {
+                        <il class="list-unstyled btn btn-secondary rounded-pill">@item.Name</il>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>

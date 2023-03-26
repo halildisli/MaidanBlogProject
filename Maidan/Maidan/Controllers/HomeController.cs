@@ -122,8 +122,15 @@ namespace Maidan.Controllers
 
             ModelState.AddModelError(string.Empty, "Password in correct!");
             return View();
-
         }
-        
+        [HttpGet]
+        public IActionResult GetArticle(int id)
+        {
+            Article article = _context.Articles.Find(id);
+            article.NumberOfReads++;
+            ViewBag.Author = _context.Authors.Where(a => a.Id == article.AuthorId).FirstOrDefault();
+            return View(article);
+        }
+
     }
 }
