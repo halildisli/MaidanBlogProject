@@ -19,7 +19,7 @@ namespace Maidan.Controllers
 
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public MemberController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager, IMapper mapper,IWebHostEnvironment webHostEnvironment)
+        public MemberController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager, IMapper mapper, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
@@ -37,6 +37,7 @@ namespace Maidan.Controllers
         public async Task<IActionResult> Index(int id)
         {
             var identityUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            //List<Tag> tags=_context.Authors.Where()
             var articlesForUser = _context.Articles.Where(a => a.AuthorId == identityUser.Id).ToList();
             return View(articlesForUser);
         }
@@ -62,10 +63,10 @@ namespace Maidan.Controllers
             var tagList = new List<SelectListItem>();
             foreach (Tag item in _context.Tags.ToList())
             {
-                tagList.Add(new SelectListItem 
+                tagList.Add(new SelectListItem
                 {
-                    Text=item.Name,
-                    Value=item.Id.ToString()
+                    Text = item.Name,
+                    Value = item.Id.ToString()
                 });
             }
 
@@ -73,7 +74,7 @@ namespace Maidan.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateArticle(ArticleViewModel createArticle,IFormFile photo,List<string> TagsList)
+        public async Task<IActionResult> CreateArticle(ArticleViewModel createArticle, IFormFile photo, List<string> TagsList)
         {
             PhotoControl(photo);
             if (ModelState.IsValid)
@@ -87,15 +88,15 @@ namespace Maidan.Controllers
                 article.AuthorId = identityUser.Id;
                 article.Title = createArticle.Title;
                 article.Content = createArticle.Content;
-                article.Image = AddPhoto(photo);
+                article.Image = AddPhotoArticle(photo);
                 foreach (string tagIdStr in TagsList)
                 {
                     int tagId = Convert.ToInt32(tagIdStr);
                     Tag tag = _context.Tags.Where(t => t.Id == tagId).FirstOrDefault();
-                    if (tag!=null)
+                    if (tag != null)
                     {
                         Tag notExistTag = article.Tags.Where(t => t.Id == tag.Id).FirstOrDefault();
-                        if (notExistTag==null)
+                        if (notExistTag == null)
                         {
                             article.Tags.Add(tag);
                         }
@@ -115,19 +116,34 @@ namespace Maidan.Controllers
                 string ext = Path.GetExtension(photo.FileName);
                 if (!photoExtensions.Contains(ext))
                 {
-                    ModelState.AddModelError("formFile", "Extension must be .jpg, .jpeg, .png!");
+                    ModelState.AddModelError("photo", "Extension must be .jpg, .jpeg, .png!");
                 }
                 else if (photo.Length > 1000 * 1000 * 1)//Bir MB'a karşılık geliyor.
                 {
-                    ModelState.AddModelError("formFile", "Maximum file size 1 MB");
+                    ModelState.AddModelError("photo", "Maximum file size 1 MB");
                 }
             }
             else
             {
-                ModelState.AddModelError("formFile", "Photo is required!");
+                ModelState.AddModelError("photo", "Photo is required!");
             }
         }
-        private string? AddPhoto(IFormFile photo)
+        private string? AddPhotoAuthor(IFormFile photo)
+        {
+            if (photo!=null)
+            {
+                string ext = Path.GetExtension(photo.FileName);
+                string photoName = Guid.NewGuid() + ext;
+                string photoPath = Path.Combine(_webHostEnvironment.WebRootPath, "images", "authorImages", photoName);
+                using (var stream = new FileStream(photoPath, FileMode.Create))
+                {
+                    photo.CopyTo(stream);
+                }
+                return photoName;
+            }
+            return null;
+        }
+        private string? AddPhotoArticle(IFormFile photo)
         {
             string ext = Path.GetExtension(photo.FileName);
             string photoName = Guid.NewGuid() + ext;
@@ -151,14 +167,19 @@ namespace Maidan.Controllers
             return View(articleViewModel);
         }
         [HttpPost]
-        public IActionResult UpdateArticle(ArticleViewModel articleViewModel)
+        public IActionResult UpdateArticle(ArticleViewModel articleViewModel, IFormFile photo)
         {
+            PhotoControl(photo);
             if (ModelState.IsValid)
             {
                 Article toBeUpdated = _context.Articles.Find(articleViewModel.Id);
                 toBeUpdated.UpdateDate = DateTime.Now;
                 toBeUpdated.Title = articleViewModel.Title;
                 toBeUpdated.Content = articleViewModel.Content;
+                if (!string.IsNullOrEmpty(AddPhotoArticle(photo)))
+                {
+                    toBeUpdated.Image = AddPhotoArticle(photo);
+                }
                 _context.Articles.Update(toBeUpdated);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Member");
@@ -169,7 +190,7 @@ namespace Maidan.Controllers
         public IActionResult DeleteArticle(int id)
         {
             Article foundedArticle = _context.Articles.Find(id);
-            ArticleViewModel articleViewModel = new ArticleViewModel() { Id = foundedArticle.Id, Title = foundedArticle.Title, Content = foundedArticle.Content};
+            ArticleViewModel articleViewModel = new ArticleViewModel() { Id = foundedArticle.Id, Title = foundedArticle.Title, Content = foundedArticle.Content };
 
             return View(articleViewModel);
         }
@@ -197,18 +218,23 @@ namespace Maidan.Controllers
 
             ViewBag.Tags = tagList;
             var userName = User.Identity.Name;
-            var user = await _userManager.FindByNameAsync(userName);
+            //var user = await _userManager.FindByNameAsync(userName);
+            var user = _context.Authors.Where(a => a.UserName == userName).FirstOrDefault();
             MyProfileViewModel viewModel = _mapper.Map<MyProfileViewModel>(user);
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> MyProfile(MyProfileViewModel viewModel,List<string> TagsList)
+        public async Task<IActionResult> MyProfile(MyProfileViewModel viewModel, List<string> TagsList, IFormFile? photo)
         {
+            if (photo != null)
+            {
+                PhotoControl(photo);
+            }
             if (ModelState.IsValid)
             {
                 var author = await _userManager.FindByIdAsync(viewModel.Id);
                 var userNameExist = await _userManager.FindByNameAsync(viewModel.UserName.ToUpper());
-                if (userNameExist==null)
+                if (userNameExist == null)
                 {
                     ModelState.AddModelError(string.Empty, "This username already exists in the database. Please try another username.");
                     author.UserName = viewModel.UserName;
@@ -223,7 +249,6 @@ namespace Maidan.Controllers
                 author.FirstName = viewModel.FirstName;
                 author.LastName = viewModel.LastName;
                 author.LastName = viewModel.LastName;
-                author.Photo = viewModel.Photo;
                 author.Bio = viewModel.Bio;
                 author.SubDomain = viewModel.SubDomain;
                 author.GithubUrl = viewModel.GithubUrl;
@@ -232,6 +257,10 @@ namespace Maidan.Controllers
                 author.TwitterUrl = viewModel.TwitterUrl;
                 author.InstagramUrl = viewModel.InstagramUrl;
                 author.WebsiteUrl = viewModel.WebsiteUrl;
+                if (!string.IsNullOrEmpty(AddPhotoAuthor(photo)))
+                {
+                    author.Photo = AddPhotoAuthor(photo);
+                }
                 foreach (string tagIdStr in TagsList)
                 {
                     int tagId = Convert.ToInt32(tagIdStr);
@@ -247,11 +276,39 @@ namespace Maidan.Controllers
                 }
                 var result = await _userManager.UpdateAsync(author);
                 TempData["Message"] = "Update has been successfully!";
-                return View();
+                return RedirectToAction("MyProfile", "Member");
             }
             TempData["Message"] = "Update failed!";
-            return View();
-
+            return RedirectToAction("MyProfile", "Member");
+        }
+        [HttpGet]
+        public async Task<IActionResult> ChangePassword(string id)
+        {
+            Author author = await _userManager.FindByIdAsync(id);
+            ChangePasswordViewModel viewModel = new();
+            viewModel.Id = author.Id;
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel passwordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var toBeUpdated = await _userManager.FindByIdAsync(passwordViewModel.Id);
+                if (toBeUpdated != null)
+                {
+                    var result = await _userManager.ChangePasswordAsync(toBeUpdated, passwordViewModel.CurrentPassword, passwordViewModel.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        TempData["PasswordChange"] = "Your password has been successfully changed!";
+                        return RedirectToAction("MyProfile", "Member");
+                    }
+                    TempData["PasswordChange"] = "An error occurred while changing your password. Try again later!";
+                    return RedirectToAction("MyProfile", "Member");
+                }
+            }
+            TempData["PasswordChange"] = "An error occurred while changing your password. Try again later!";
+            return RedirectToAction("MyProfile", "Member");
         }
 
 

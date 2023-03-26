@@ -34,7 +34,7 @@ namespace Maidan.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("ArticleTag");
+                    b.ToTable("ArticleTag", (string)null);
                 });
 
             modelBuilder.Entity("AuthorTag", b =>
@@ -49,7 +49,7 @@ namespace Maidan.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("AuthorTag");
+                    b.ToTable("AuthorTag", (string)null);
                 });
 
             modelBuilder.Entity("Maidan.Models.Article", b =>
@@ -94,7 +94,7 @@ namespace Maidan.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("Maidan.Models.Tag", b =>
@@ -114,7 +114,7 @@ namespace Maidan.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

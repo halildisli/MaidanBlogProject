@@ -1,0 +1,79 @@
+﻿@model Maidan.ViewModels.MyProfileViewModel
+
+@{
+    ViewData["Title"] = "GetAuthor";
+}
+
+<div class="container">
+    <h4>MyProfileViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/images/authorImages/@Model.Photo" width="100%" class="rounded-circle" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GithubUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="https://www.github.com/@Model.GithubUrl"><i class="bi bi-github"></i></a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LinkedInUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="https://www.linkedin.com/@Model.LinkedInUrl"><i class="bi bi-linkedin"></i></a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TwitterUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="https://www.twitter.com/@Model.TwitterUrl"><i class="bi bi-twitter"></i></a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InstagramUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="https://www.instagram.com/@Model.InstagramUrl"><i class="bi bi-instagram"></i></a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="@Model.WebsiteUrl"><i class="bi bi-browser"></i></a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="AuthorArticles" asp-route-userName="@Model?.UserName">@Model.UserName<text>'s Articles</text></a> |
+    <a asp-action="Index">Back to Reading</a>
+</div>
+
+

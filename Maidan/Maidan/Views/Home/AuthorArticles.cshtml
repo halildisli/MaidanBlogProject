@@ -1,0 +1,53 @@
+﻿@model List<Article>
+
+<div class="container my-2">
+    <h2>Trending on Ma<span style="color:#FFC017">i</span>dan.</h2>
+    <hr />
+</div>
+<div class="container my-2">
+    @{
+        foreach (var item in Model)
+        {
+            <div class="card my-4">
+                <div class="card-header">
+                    <img src="~/images/authorImages/@item.Image" width="20" class="rounded-circle" /> @item.AuthorId
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">
+                                @{
+                                    if (item.Content.Length > 30)
+                                    {
+                                        @item.Content.Substring(0,30)
+                                    }
+                                    else
+                                    {
+                                        @item.Content
+                                    }
+                                }
+                            </p>
+                            <a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="/images/articleImages/default-article-image.jpg" width="100%" />
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted">
+                    @{
+                        foreach (var tag in item.Tags)
+                        {
+                            <span><button class="btn btn-secondary rounded-pill">@tag.Name</button></span>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+    <div class="row my-4 text-center">
+        <div><a class="btn btn-primary btn-block" asp-action="AllArticles">Load More Articles</a></div>
+    </div>
+</div>

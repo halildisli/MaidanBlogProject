@@ -1,0 +1,85 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "maidan.";
+    List<Article> Articles = Model.OrderByDescending(a => a.NumberOfReads).Take(100).ToList();
+    List<Author> authors = ViewBag.Authors;
+}
+<!-- Begin Site Title
+================================================== -->
+
+<div class="row rounded-pill" style="height:20rem; background-color:#FFC017">
+    <div class="col-md-8 d-flex flex-column justify-content-center">
+        <div class="row m-3">
+            <h1>Stay curious.</h1>
+        </div>
+        <div class="row m-3">
+            <h2>Discover stories, thinking, and expertise from writers on any topic.</h2>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-4">
+                <form>
+                    <input asp-action="SignUp" type="submit" class="btn btn-dark rounded-pill btn-block" value="Join Maidan" asp-controller="Home" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <img />
+    </div>
+
+</div>
+<!-- End Site Title
+================================================== -->
+
+<div class="container my-2">
+    <h2>Trending on Ma<span style="color:#FFC017">i</span>dan.</h2>
+    <hr />
+</div>
+<div class="container my-2">
+    @{
+        foreach (var item in Articles)
+        {
+            <div class="card my-4">
+                <div class="card-header">
+                    <img src="/images/authorImages/@item.Image" width="20" class="rounded-circle" /> @item.AuthorId
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">
+                                @{
+                                    if (item.Content.Length > 300)
+                                    {
+                                        @item.Content.Substring(0,300)
+                                    }
+                                    else
+                                    {
+                                        @item.Content
+                                    }
+                                }
+                            </p>
+                            <a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="/images/articleImages/@item.Image" width="100%" />
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted">
+                    @{
+                        foreach (var tag in item.Tags)
+                        {
+                            <span><button class="btn btn-secondary rounded-pill">@tag.Name</button></span>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+    <div class="row my-4 text-center">
+        <div><a class="btn btn-warning btn-block rounded-pill" asp-action="SignUp">Do you want see a more articles? Let's join us!'</a></div>
+    </div>
+</div>
+

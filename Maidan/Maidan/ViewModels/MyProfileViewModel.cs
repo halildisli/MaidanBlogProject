@@ -7,7 +7,10 @@ namespace Maidan.ViewModels
     {
         public MyProfileViewModel()
         {
-            Tags = new List<Tag>();
+            if (Tags == null)
+            {
+                Tags = new List<Tag>();
+            }
         }
         public string? Id
         {
@@ -17,9 +20,6 @@ namespace Maidan.ViewModels
         [MinLength(5, ErrorMessage = "Username cannot be greater than 30 characters!")]
         [Required]
         public string? UserName { get; set; }
-        [DataType(DataType.Password, ErrorMessage = "Your password should be minimum eight characters, at least one uppercase letter, one lowercase letter and one number!")]
-        [Required]
-        public string PasswordHash { get; set; }
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Required]
         public string? Email { get; set; }
@@ -44,6 +44,8 @@ namespace Maidan.ViewModels
         public string? InstagramUrl { get; set; }
         [MaxLength(100, ErrorMessage = "Your Website-address cannot be greater than 100 characters!")]
         public string? WebsiteUrl { get; set; }
+
         public List<Tag> Tags { get; set; }
+
     }
 }

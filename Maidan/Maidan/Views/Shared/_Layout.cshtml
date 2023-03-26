@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Maidan.styles.css" asp-append-version="true" />
-
-    <!--Select2 Css File-->
-    <link href="/css/select2.min.css" rel="stylesheet" asp-append-version="true"/>
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    @await RenderSectionAsync("Css", required: false)
     
     <!-- Dışarıdan alınan -->
     <link rel="icon" href="/assets/img/favicon.ico" asp-append-version="true">
@@ -68,8 +68,5 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-
-<!--Select2 JS File-->
-<script src="/js/select2.full.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </html>

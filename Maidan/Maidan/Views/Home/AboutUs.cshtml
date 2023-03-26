@@ -5,12 +5,13 @@
 
 <h1 class="text-center">About Us</h1>
 <h5 class="text-center">Description</h5>
+<hr />
 <div class="container">
     <div class="row my-2">
         <div class="col-md-6 my-1">
             <img src="/images/articleImages/about-us.jpg" width="100%"/>
         </div>
-        <div class="col-md-6 my-1">
+        <div class="col-md-6 my-1 d-flex flex-column justify-content-center">
             <p>I am Chloe Green, a hockey fan, hustler, audiophile, international Swiss style practitioner, and independent graphic designer. I operate at the crossroads of beauty and sustainability to express ideas through design and act at the crossroads of beauty and elegance to create great work for living breathing human beings. I work with fortune 30 companies and startups.</p>
             <p>
                 I have graduated from an art college in 2013, ready to start my professional career as an artist. It was not the easiest thing, but I was full of excitement and belief in myself. The struggle of some months resulted in getting my dream job in a well-known IT company.
@@ -20,19 +21,22 @@
             </p>
         </div>
     </div>
-    <div class="row my-2">
+    <div class="row my-2 text-center">
         <div class="col col-md3">
-            <h3>Service Time</h3>
+            <h3 class="my-3">Service Time</h3>
+            <h2 class="my-3 text-success">@((Convert.ToInt32(ViewBag.ServiceTime)).ToString()) days</h2>
         </div>
         <div class="col col-md3">
-            <h3>Tag Count</h3>
+            <h3 class="my-3">Tag Count</h3>
+            <h2 class="my-3 text-success">@ViewBag.TagsCount.ToString()</h2>
         </div>
         <div class="col col-md3">
-            <h3>Article Count</h3>
-
+            <h3 class="my-3">Article Count</h3>
+            <h2 class="my-3 text-success">@ViewBag.ArticlesCount.ToString()</h2>
         </div>
         <div class="col col-md3">
-            <h3>Member Count</h3>
+            <h3 class="my-3">Member Count</h3>
+            <h2 class="my-3 text-success">@ViewBag.AuthorsCount.ToString()</h2>
         </div>
     </div>
 </div>
