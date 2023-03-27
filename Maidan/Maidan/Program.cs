@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using AppUser.Management.Service.Configurations;
+using AppUser.Management.Service.Services;
 
 namespace Maidan
 {
@@ -19,6 +22,10 @@ namespace Maidan
 
             builder.Services.AddIdentity<Author, IdentityRole>().AddEntityFrameworkStores<MaidanDbContext>().AddDefaultTokenProviders();
 
+            //Email ActivationCode
+            builder.Services.Configure<IdentityOptions>(
+                    options => options.SignIn.RequireConfirmedEmail = true);
+
             //builder.Services.AddAuthentication(
             //    opt =>
             //    {
@@ -28,8 +35,13 @@ namespace Maidan
             //    }
             //    );
 
+            builder.Services.AddSingleton
+                (builder.Configuration.GetSection
+                ("EmailConfig").Get<EmailConfig>());
+
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            builder.Services.AddScoped<IEmailService, EMailService>();
 
             var app = builder.Build();
 

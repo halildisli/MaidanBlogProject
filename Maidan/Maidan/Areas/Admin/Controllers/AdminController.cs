@@ -10,7 +10,7 @@ using System.Data;
 namespace Maidan.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
         private readonly UserManager<Author> _userManager;
@@ -171,10 +171,10 @@ namespace Maidan.Areas.Admin.Controllers
             return RedirectToAction("ListUsers");
         }
         [HttpGet]
-        public async Task<IActionResult> SignOut()
+        public async Task<IActionResult> SignOutAdmin()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "Home", new {Area="Admin"});
         }
     }
 }

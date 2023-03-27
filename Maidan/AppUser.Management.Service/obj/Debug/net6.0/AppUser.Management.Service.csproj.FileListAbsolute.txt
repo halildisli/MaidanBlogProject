@@ -1,0 +1,12 @@
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\bin\Debug\net6.0\AppUser.Management.Service.deps.json
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\bin\Debug\net6.0\AppUser.Management.Service.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\bin\Debug\net6.0\AppUser.Management.Service.pdb
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.csproj.AssemblyReference.cache
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.AssemblyInfoInputs.cache
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.AssemblyInfo.cs
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.csproj.CoreCompileInputs.cache
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\refint\AppUser.Management.Service.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\AppUser.Management.Service.pdb
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\AppUser.Management.Service\obj\Debug\net6.0\ref\AppUser.Management.Service.dll

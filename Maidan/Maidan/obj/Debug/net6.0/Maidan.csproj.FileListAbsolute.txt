@@ -302,3 +302,9 @@ C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\ne
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\System.Web.WebPages.dll
 C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\MailKit.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\MimeKit.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\NETCore.MailKit.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\AppUser.Management.Service.dll
+C:\GitHubProjects\MaidanBlogProject\MaidanBlogProject\Maidan\Maidan\bin\Debug\net6.0\AppUser.Management.Service.pdb

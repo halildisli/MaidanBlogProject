@@ -4,22 +4,24 @@
     ViewData["Title"] = "Tags List";
 }
 
-<div class="container">
-    <h1 class="text-center">Tags List</h1>
+<div class="container m-4">
+    <h1 class="text-center m-2">Tags List</h1>
 
-    <p>
+    <p class="text-center">
         <a class="btn btn-warning m-2 rounded-pill" asp-action="AddTag" asp-controller="Admin">Create New Tag</a>
     </p>
     <table class="table table-hover">
         <thead class="thead-dark">
-            <tr>
-                <th class="table-dark">
+            <tr class="text-center">
+                <th class="table-dark text-center">
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-                <th class="table-dark">
+                <th class="table-dark text-center">
                     @Html.DisplayNameFor(model => model.Description)
                 </th>
-                <th></th>
+                <th class="table-dark text-center">
+                    Manage Settings
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +30,7 @@
                 {
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr class="text-center">
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>

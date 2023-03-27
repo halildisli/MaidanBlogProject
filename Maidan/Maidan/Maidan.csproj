@@ -24,4 +24,8 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AppUser.Management.Service\AppUser.Management.Service.csproj" />
+  </ItemGroup>
+
 </Project>

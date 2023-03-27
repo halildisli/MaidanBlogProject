@@ -1,10 +1,18 @@
-﻿using AutoMapper;
+﻿using AppUser.Management.Service.Models;
+using AppUser.Management.Service.Services;
+using AutoMapper;
 using Maidan.Models;
+using Maidan.OtherModels;
 using Maidan.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Maidan.Controllers
 {
@@ -17,7 +25,10 @@ namespace Maidan.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         private readonly IMapper _mapper;
-        public HomeController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager,SignInManager<Author> signInManager,IWebHostEnvironment webHostEnvironment,IMapper mapper)
+        private readonly IEmailService _emailService;
+
+        private readonly IConfiguration _configuration;
+        public HomeController(MaidanDbContext context, UserManager<Author> userManager, RoleManager<IdentityRole> roleManager,SignInManager<Author> signInManager,IWebHostEnvironment webHostEnvironment,IMapper mapper,IEmailService emailService,IConfiguration configuration)
         {
             _context = context;
             _userManager = userManager;
@@ -25,8 +36,19 @@ namespace Maidan.Controllers
             _signInManager = signInManager;
             _webHostEnvironment = webHostEnvironment;
             _mapper = mapper;
+            _emailService = emailService;
+            _configuration = configuration;
         }
+        public IActionResult SendMail(string name,string email)
+        {
 
+            var emailMessage = new MailMessage(new Dictionary<string, string>() { { name, email } }, "Maidan E-Mail Confirmation", "<h1>Welcome to ma<span style:\"color:#ffc017\">i<span>dan.</h1><hr/><p>Yazan: <b>Maidan Human Resources</b></p>");
+
+            _emailService.SendEmail(emailMessage);
+
+
+            return StatusCode(StatusCodes.Status200OK, new AppResponse() { Status = "Success", Message = "Email sent successfully!" });
+        }
         public IActionResult Index()
         {
             List<Article> topTenArticles = _context.Articles.OrderByDescending(a => a.NumberOfReads).Take(10).ToList();
@@ -155,7 +177,18 @@ namespace Maidan.Controllers
                     var resultRole = await _userManager.AddToRoleAsync(identityUser, "USER");
                     if (resultRole.Succeeded)
                     {
-                        TempData["Message"] = "Sign Up successfully!";
+                        #region Token Create and Verification Mail Send
+
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(identityUser);
+                        var emailConfirmationLink = Url.Action(nameof(ConfirmEmail), "Home", new { token, email = identityUser.Email }, Request.Scheme);
+                        var emailVerificationMessage = new MailMessage(new Dictionary<string, string>() { { identityUser.UserName!, identityUser.Email! } },"Email Verification Link",$"<b>Your email verification link:</b>{emailConfirmationLink!}");
+                        _emailService.SendEmail(emailVerificationMessage);
+
+
+                        #endregion
+
+
+                        TempData["Message"] = "Sign Up successfully! Please click on the activation link sent to your e-mail. ";
                         return RedirectToAction("SignIn", "Home");
                     }
                 }
@@ -207,6 +240,7 @@ namespace Maidan.Controllers
             return View();
         }
 
+        /*
         [HttpPost]
         public async Task<ActionResult> SignIn(SignInViewModel viewModel)
         {
@@ -230,6 +264,67 @@ namespace Maidan.Controllers
             ModelState.AddModelError(string.Empty, "Password in correct!");
             return View();
         }
+        */
+
+
+        [HttpPost]
+        public async Task<ActionResult> SignIn(SignInViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = await _userManager.FindByEmailAsync(viewModel.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "User not found!");
+                return View();
+            }
+            if (await _userManager.IsEmailConfirmedAsync(user))
+            {
+                #region JWT TOKEN YONTEMI
+                /*
+                    if (await _userManager.CheckPasswordAsync(user,viewModel.Password))
+                    {
+
+                        //Token'a payload eklemeleri yapılıyor.
+                        var authClaims = new List<Claim> { new Claim(ClaimTypes.Name,user.UserName),new Claim
+                            (System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())};
+
+                        var userRoles = await _userManager.GetRolesAsync(user);
+                        foreach (var userRole in userRoles)
+                        {
+                            authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                        }
+                        var jwtToken = GetToken(authClaims);
+                        return Ok(new {token=new JwtSecurityTokenHandler().WriteToken(jwtToken),expiration=jwtToken.ValidTo});
+
+
+
+                    }
+                */
+                #endregion
+
+                var signInResult = await _signInManager.PasswordSignInAsync(user, viewModel.Password, viewModel.RememberMe, true);
+                if (signInResult.Succeeded)
+                {
+                    return RedirectToAction("Index", "Member");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Username or password wrong!");
+                    return View();
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "You cannot enter without e-mail verification!");
+                return View();
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetArticle(int id)
         {
@@ -242,6 +337,44 @@ namespace Maidan.Controllers
             _context.SaveChanges();
             ViewBag.Author = _context.Authors.Where(a => a.Id == article.AuthorId).FirstOrDefault();
             return View(article);
+        }
+
+        private JwtSecurityToken GetToken(List<Claim> authClaims)
+        {
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["JWT:ValidIssuer"],
+                audience: _configuration["JWT:ValidAudience"],
+                expires: DateTime.Now.AddHours(6),
+                claims: authClaims,
+                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+                );
+
+            return token;
+        }
+
+        //TODO: (ACTIVATION CODE - 2. Madde)
+        [HttpGet("EmailConfirmation")]
+        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                var result = await _userManager.ConfirmEmailAsync(user, token);
+                if (result.Succeeded)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new AppResponse() { Status = "Onaylama başarılı!", Message = "Kullanıcının maili onaylandı!" });
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new AppResponse() { Status = "Onaylama başarısız!", Message = "Kullanıcının token bilgisi yanlıştır!" });
+                }
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new AppResponse() { Status = "Kullanıcı sistemde bulunmamaktadır!", Message = "Kullanıcı bulunamadı!" });
+            }
         }
 
     }
