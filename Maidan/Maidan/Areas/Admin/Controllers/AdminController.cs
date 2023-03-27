@@ -29,6 +29,12 @@ namespace Maidan.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.AuthorsCount = _context.Authors.Count();
+            ViewBag.ArticlesCount = _context.Articles.Count();
+            ViewBag.TagsCount = _context.Tags.Count();
+            var firstArticle = _context.Articles.OrderBy(a => a.ReleaseDate).FirstOrDefault();
+            var serviceTime = (DateTime.Now - firstArticle.ReleaseDate).TotalDays;
+            ViewBag.ServiceTime = serviceTime;
             return View();
         }
         [HttpGet]

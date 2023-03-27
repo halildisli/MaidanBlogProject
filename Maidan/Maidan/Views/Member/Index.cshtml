@@ -40,8 +40,8 @@
                             <div><a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a></div>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" width="100" /></a>
+                    <div class="col-md-3 text-center row d-flex justify-content-center align-items-center">
+                        <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" class="rounded-3 w-50" /></a>
                     </div>
                 </div>
 

@@ -3,5 +3,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
+
+<div class="container">
+    <div class="row my-2 text-center">
+        <h1>ma<span style="color:#ffc017">i</span>dan statistics</h1>
+        <hr />
+    </div>
+    <div class="row my-2 text-center">
+        <div class="col col-md3">
+            <h3 class="my-3">Service Time</h3>
+            <h2 class="my-3 text-success">@((Convert.ToInt32(ViewBag.ServiceTime)).ToString()) days</h2>
+        </div>
+        <div class="col col-md3">
+            <h3 class="my-3">Tag Count</h3>
+            <h2 class="my-3 text-success">@ViewBag.TagsCount.ToString()</h2>
+        </div>
+        <div class="col col-md3">
+            <h3 class="my-3">Article Count</h3>
+            <h2 class="my-3 text-success">@ViewBag.ArticlesCount.ToString()</h2>
+        </div>
+        <div class="col col-md3">
+            <h3 class="my-3">Member Count</h3>
+            <h2 class="my-3 text-success">@ViewBag.AuthorsCount.ToString()</h2>
+        </div>
+    </div>
+</div>

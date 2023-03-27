@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "All Articles";
     Layout = "_Layout";
-    List<Author> authors = ViewBag.Authors;
+    List<Author> allAuthors = ViewBag.Authors;
 
 }
 <div class="container my-2 text-center">
@@ -15,9 +15,7 @@
         foreach (var item in Model)
         {
             <div class="card my-4">
-                <div class="card-header">
-                    <img src="/images/authorImages/default-author-image.png" width="20" class="rounded-circle" />
-                </div>
+                <a asp-action="GetAuthor" asp-route-userName="@allAuthors[i].UserName"><img src="/images/authorImages/@allAuthors[i].Photo" width="20" class="rounded-circle" /> @allAuthors[i].UserName</a>
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card-body">
@@ -27,7 +25,9 @@
                                 @{
                                     if (item.Content.Length > 500)
                                     {
-                                        @item.Content.Substring(0,500)<text>...</text>
+                                        @item.Content.Substring(0,500)
+
+                                        <text>...</text>
                                     }
                                     else
                                     {
@@ -38,9 +38,8 @@
                             <div><a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a></div>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" width="100" /></a>
-                        
+                    <div class="col-md-3 text-center row d-flex justify-content-center align-items-center">
+                        <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" class="w-50 rounded-3" /></a>
                     </div>
                 </div>
 
