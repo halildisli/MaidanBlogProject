@@ -1,0 +1,59 @@
+﻿@model List<Article>
+@{
+	ViewData["Title"] = "All Articles";
+	Layout = "_Layout";
+	
+}
+<div class="container my-2 text-center">
+    <h2>Articles on Ma<span style="color:#FFC017">i</span>dan.</h2>
+    <hr />
+</div>
+<div class="container my-2">
+    @{
+        foreach (var item in Model)
+        {
+            <div class="card my-4">
+                <div class="card-header">
+                    <img src="/images/authorImages/@ViewBag.AuthorPhoto" width="20" class="rounded-circle" /> @ViewBag.AuthorName
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card-body">
+
+                            <a asp-action="GetArticle" asp-route-id="@item.Id"><h5 class="card-title">@item.Title</h5></a>
+                            <p class="card-text">
+                                @{
+                                    if (item.Content.Length > 300)
+                                    {
+                                        @item.Content.Substring(0,300)
+                                    }
+                                    else
+                                    {
+                                        @item.Content
+                                    }
+                                }
+                            </p>
+                            <div><a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" width="100" /></a>
+                        
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted">
+                    @{
+                        foreach (var tag in item.Tags)
+                        {
+                            <span><button class="btn btn-secondary rounded-pill">@tag.Name</button></span>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+    <div class="row my-4 text-center">
+        <div><a class="btn btn-warning btn-block rounded-pill" asp-action="Index">Back To Home</a></div>
+    </div>
+</div>

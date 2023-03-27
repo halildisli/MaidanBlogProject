@@ -66,12 +66,23 @@ namespace Maidan.Controllers
             }
             return BadRequest();
         }
-        public async Task<IActionResult> MyArticles(int id)
+        public async Task<IActionResult> MyArticles()
         {
             var identityUser = await _userManager.FindByNameAsync(User.Identity.Name);
             //List<Tag> tags=_context.Authors.Where()
             var articlesForUser = _context.Articles.Where(a => a.AuthorId == identityUser.Id).ToList();
             return View(articlesForUser);
+        }
+        public async Task<IActionResult> AllArticles()
+        {
+            var author = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (author!=null)
+            {
+                ViewBag.Authorname = author.FirstName + " " + author.LastName;
+                ViewBag.AuthorPhoto = author.Photo;
+            }
+            var allArticles = _context.Articles.ToList();
+            return View(allArticles);
         }
         public async Task<IActionResult> GetArticle(int id)
         {
@@ -80,6 +91,9 @@ namespace Maidan.Controllers
             var top3ArticlesForUser = _context.Articles.Where(a => a.AuthorId == identityUser.Id).OrderByDescending(a => a.ReleaseDate).Take(3).ToList();
             ViewBag.Top3Articles = top3ArticlesForUser;
             ViewBag.Author = identityUser;
+            article.NumberOfReads++;
+            _context.Articles.Update(article);
+            _context.SaveChanges();
             return View(article);
         }
 

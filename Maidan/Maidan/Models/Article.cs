@@ -24,7 +24,7 @@ namespace Maidan.Models
         public DateTime UpdateDate { get; set; }
         public string? Privacy { get; set; }
         public int? TotalReadTime { get; set; }
-        public int? NumberOfReads { get; set; }
+        public int NumberOfReads { get; set; }
 
 
         public Author Author { get; set; }

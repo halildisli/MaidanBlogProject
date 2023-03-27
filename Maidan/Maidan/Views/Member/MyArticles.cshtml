@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Article>
 @{
-	ViewData["Title"] = "Index";
+	ViewData["Title"] = "My Articles";
 	Layout = "_Layout";
 	
 }
@@ -15,19 +15,25 @@
         {
             <div class="col col-md-5 border border-secondary rounded-3 m-4">
                 <div class="card h-100">
-                    <a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id">
-                        <img src="/images/articleImages/default-article-image.jpg" class="card-img-top" alt="@article.Title">
-                    </a>
+					<div>
+					<a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id">
+					        <img src="/images/articleImages/@article.Image" class="card-img-top img-thumbnail rounded-3 w-75" alt="@article.Title">
+					    </a>
+					</div>
                     <div class="card-body">
-                        <a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id"><h5 class="card-title">@article.Title</h5></a>
+					<a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id"><h5 class="card-title">@article.Title</h5></a>
                         <p class="card-text">@article.Content</p>
+  
                     </div>
                     <div class="card-footer">
+					<div class="my-2">
+                            <a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-primary">Details</a>
+                        </div>
                         <div class="my-2">
-                            <a asp-action="UpdateArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-primary">Update Article</a>
+                            <a asp-action="UpdateArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-primary">Update</a>
                         </div>
 						<div class="my-2">
-                            <a asp-action="DeleteArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-danger">Delete Article</a>
+                            <a asp-action="DeleteArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-danger">Delete</a>
                         </div class="my-2">
                         <div class="my-2">
                             <small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - article.UpdateDate).TotalMinutes)) mins ago</small>

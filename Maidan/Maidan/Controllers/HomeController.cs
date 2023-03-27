@@ -43,10 +43,11 @@ namespace Maidan.Controllers
             var articles = _context.Articles.ToList();
             return View(articles);
         }
-        public IActionResult GetAuthor(string id)
+        public IActionResult GetAuthor(string userName)
         {
-            var author = _context.Authors.Where(a => a.Id == id).FirstOrDefault();
+            var author = _context.Authors.Where(a => a.UserName == userName).FirstOrDefault();
             MyProfileViewModel viewModel = _mapper.Map<MyProfileViewModel>(author);
+            ViewBag.AuthorPhoto = author.Photo; ///Burada sıkıntı var!!!!!
             return View(viewModel);
         }
         public async Task<IActionResult> AuthorArticles(string userName)
@@ -194,10 +195,15 @@ namespace Maidan.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult GetArticle(int id)
+        public async Task<IActionResult> GetArticle(int id)
         {
-            Article article = _context.Articles.Find(id);
+            var article = _context.Articles.Find(id);
+            var author = await _userManager.FindByIdAsync(article.AuthorId);
+            var top3ArticlesForAuthor = _context.Articles.Where(a => a.AuthorId == author.Id).OrderByDescending(a => a.NumberOfReads).Take(3).ToList();
+            ViewBag.Top3Articles = top3ArticlesForAuthor;
             article.NumberOfReads++;
+            _context.Articles.Update(article);
+            _context.SaveChanges();
             ViewBag.Author = _context.Authors.Where(a => a.Id == article.AuthorId).FirstOrDefault();
             return View(article);
         }

@@ -1,7 +1,8 @@
 ﻿@model Maidan.ViewModels.MyProfileViewModel
 
 @{
-    ViewData["Title"] = "GetAuthor";
+    ViewData["Title"] = Model.UserName;
+    
 }
 
 <div class="container">
@@ -12,7 +13,7 @@
             @Html.DisplayNameFor(model => model.Photo)
         </dt>
         <dd class="col-sm-10">
-            <img src="/images/authorImages/@Model.Photo" width="100%" class="rounded-circle" />
+            <img src="/images/authorImages/@ViewBag.AuthorPhoto" width="100" class="rounded-circle" />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UserName)
