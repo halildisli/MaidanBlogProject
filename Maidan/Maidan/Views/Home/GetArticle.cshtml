@@ -50,12 +50,12 @@
                 <!-- Begin Top Meta -->
                 <div class="row post-top-meta">
                     <div class="col-md-2">
-                        <a href="author.html"><img class="author-thumb" src="/images/authorImages/default-author-image.png" alt="Author Image"></a>
+                        <a asp-action="GetAuthor" asp-route-userName="@author.UserName"><img class="author-thumb" src="/images/authorImages/@author.Photo" alt="Author Image"></a>
                     </div>
                     <div class="col-md-10">
                         <div class="row d-flex justify-content-start">
                             <div class="col-md-2">
-                                <a class="link-dark" asp-action="GetAuthor">@author.UserName</a>
+                                <a class="link-dark" asp-action="GetAuthor" asp-route-userName="@author.UserName">@author.UserName</a>
                             </div>
                             <div class="col-md-2">
                                 <a asp-action="SignUp">Follow</a>

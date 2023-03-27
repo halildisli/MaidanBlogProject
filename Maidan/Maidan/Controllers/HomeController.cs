@@ -43,12 +43,24 @@ namespace Maidan.Controllers
             var articles = _context.Articles.ToList();
             return View(articles);
         }
-        public IActionResult GetAuthor(string userName)
+        public async Task<IActionResult> GetAuthor(string userName)
         {
-            var author = _context.Authors.Where(a => a.UserName == userName).FirstOrDefault();
-            MyProfileViewModel viewModel = _mapper.Map<MyProfileViewModel>(author);
-            ViewBag.AuthorPhoto = author.Photo; ///Burada sıkıntı var!!!!!
-            return View(viewModel);
+            var author = await _userManager.FindByNameAsync(userName);
+            if (author!=null)
+            {
+                if (author.Photo != null)
+                {
+                    ViewBag.AuthorPhoto = author.Photo;
+                }
+                else
+                {
+                    ViewBag.AuthorPhoto = "";
+                }
+                MyProfileViewModel viewModel = _mapper.Map<MyProfileViewModel>(author);
+                return View(viewModel);
+            }
+            return RedirectToAction(nameof(Index));
+            
         }
         public async Task<IActionResult> AuthorArticles(string userName)
         {
