@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Maidan.Areas.Admin.ViewModels;
 using Maidan.Models;
+using Maidan.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Maidan.Areas.Admin.Controllers
         private readonly SignInManager<Author> _signInManager;
         private readonly IMapper _mapper;
         private readonly MaidanDbContext _context;
-        public AdminController(UserManager<Author> userManager,RoleManager<IdentityRole> roleManager,SignInManager<Author> signInManager,IMapper mapper,MaidanDbContext context)
+        public AdminController(UserManager<Author> userManager, RoleManager<IdentityRole> roleManager, SignInManager<Author> signInManager, IMapper mapper, MaidanDbContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -41,7 +42,7 @@ namespace Maidan.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Tag tag = _mapper.Map<Tag>(tagModel);
-                if (_context.Tags.Where(t => t.Name == tag.Name).FirstOrDefault()==null)
+                if (_context.Tags.Where(t => t.Name == tag.Name).FirstOrDefault() == null)
                 {
                     _context.Tags.Add(tag);
                     _context.SaveChanges();
@@ -53,6 +54,29 @@ namespace Maidan.Areas.Admin.Controllers
             }
             TempData["Message"] = "You entered incorrect information!Please try again.";
             return View();
+        }
+        [HttpGet]
+        public IActionResult EditTag(int id)
+        {
+            Tag tag = _context.Tags.Find(id);
+            return View(tag);
+        }
+        [HttpPost]
+        public IActionResult EditTag(Tag tagUpdated)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Tags.Update(tagUpdated);
+                _context.SaveChanges();
+                TempData["Message"] = "Tag editing succussfully!";
+                return RedirectToAction("ListTags");
+            }
+            return View();
+        }
+        public IActionResult DeleteTag(int id)
+        {
+            _context.Tags.Remove(_context.Tags.Find(id));
+            return RedirectToAction("ListTags");
         }
         [HttpGet]
         public IActionResult ListTags()
@@ -68,6 +92,37 @@ namespace Maidan.Areas.Admin.Controllers
             List<UserViewModel> userModels = _mapper.Map<List<UserViewModel>>(users);
             return View(userModels);
         }
+        [HttpGet]
+        public IActionResult CreateAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateAdmin(AdminViewModel viewModel)
+        {
+            Author author = _mapper.Map<Author>(viewModel);
+            var foundedUser = await _userManager.FindByEmailAsync(viewModel.Email);
+            if (foundedUser==null)
+            {
+                IdentityResult result = await _userManager.CreateAsync(author,viewModel.Password);
+                if (result.Succeeded)
+                {
+                    var resultRole = await _userManager.AddToRoleAsync(author, "ADMIN");
+                    if (resultRole.Succeeded)
+                    {
+                        TempData["Message"] = "Admin created successfully!";
+                        return RedirectToAction("ListUsers", "Admin");
+                    }
+                }
+                else
+                {
+                    TempData["Message"] = "Admin create process failed!";
+                    return RedirectToAction("ListUsers", "Admin");
+                }
+            }
+            TempData["Message"] = "Admin create process failed!";
+            return RedirectToAction("ListUsers", "Admin");
+        }
 
         [HttpGet]
         public async Task<IActionResult> EditUser(string id)
@@ -80,7 +135,7 @@ namespace Maidan.Areas.Admin.Controllers
         public async Task<IActionResult> EditUser(UserViewModel userModel)
         {
             var user = await _userManager.FindByIdAsync(userModel.Id);
-            if (user!=null)
+            if (user != null)
             {
                 user.UserName = userModel.UserName;  //???????
                 user.Email = userModel.Email;
@@ -106,8 +161,14 @@ namespace Maidan.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteUser(UserViewModel incomeModel)
         {
             var toBeDeleted = await _userManager.FindByIdAsync(incomeModel.Id);
-            var result= await _userManager.DeleteAsync(toBeDeleted);
+            var result = await _userManager.DeleteAsync(toBeDeleted);
             return RedirectToAction("ListUsers");
+        }
+        [HttpGet]
+        public async Task<IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

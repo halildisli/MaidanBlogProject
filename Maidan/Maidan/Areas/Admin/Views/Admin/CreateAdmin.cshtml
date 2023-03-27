@@ -1,0 +1,36 @@
+﻿@model AdminViewModel
+@{
+    ViewData["Title"] = "Create a New Admin";
+}
+
+<div class="container">
+    <div class="row m-3">
+        <h1 class="text-center">Create a New Admin</h1>
+        <hr />
+    </div>
+    <div class="row m-3">
+        <div class="col-md-4 offset-4">
+            <form asp-action="CreateAdmin" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" id="Password" class="control-label"></label>
+                    <input asp-for="Password" id="Password" name="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Create Admin" class="btn btn-block" style="background-color:#FFC017" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
