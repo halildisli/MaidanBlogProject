@@ -17,12 +17,23 @@
                 <div class="card h-100">
 					<div>
 					<a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id">
-					        <img src="/images/articleImages/@article.Image" class="card-img-top img-thumbnail rounded-3 w-75" alt="@article.Title">
+					        <img src="/images/articleImages/@article.Image" class="card-img-top img-thumbnail rounded-3 w-50" alt="@article.Title">
 					    </a>
 					</div>
                     <div class="card-body">
 					<a asp-action="GetArticle" asp-controller="Member" asp-route-id="@article.Id"><h5 class="card-title">@article.Title</h5></a>
-                        <p class="card-text">@article.Content</p>
+                        <p class="card-text">
+						@{if (article.Content.Length>300)
+								{
+									@article.Content.Substring(0,300)<text>...</text>
+								}
+								else
+								{
+									@article.Content
+								}
+						}
+						
+						</p>
   
                     </div>
                     <div class="card-footer">
@@ -35,24 +46,27 @@
 						<div class="my-2">
                             <a asp-action="DeleteArticle" asp-controller="Member" asp-route-id="@article.Id" class="btn btn-danger">Delete</a>
                         </div class="my-2">
-                        <div class="my-2">
-                            <small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - article.UpdateDate).TotalMinutes)) mins ago</small>
-                        </div>
+                        
                     </div>
+					<div class="card-footer">
+						<div class="row my-2">
+							<div class="col-md-4">
+								@article.NumberOfReads<text> Views</text>
+							</div>
+							<div class="col-md-4">
+								<small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - article.UpdateDate).TotalMinutes)) mins ago</small>
+							</div>
+							<div class="col-md-4">
+								<a asp-action="GetArticle" asp-route-id="@article.Id"><i class="fa-regular fa-comment fa-lg"></i> 45</a>
+							</div>
+                        </div>
+					</div>
                 </div>
             </div>
         }
     }
 </div>
-<!-- Begin AlertBar
-================================================== -->
-<div class="alertbar">
-	<div class="container text-center">
-		<img src="assets/img/logo.png" alt=""> &nbsp; Never miss a <b>story</b> from us, get weekly updates in your inbox. <a asp-action="Membership" asp-controller="Home" class="btn subscribe">Get Updates</a>
-	</div>
-</div>
-<!-- End AlertBar
-================================================== -->
+
 
 @*
 <!-- Begin Article

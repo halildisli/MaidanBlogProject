@@ -12,6 +12,7 @@ namespace Maidan.Mapping
             CreateMap<MyProfileViewModel, Author>().ReverseMap();
             CreateMap<TagViewModel, Tag>().ReverseMap();
             CreateMap<UserViewModel, Author>().ReverseMap();
+            CreateMap<ArticleViewModel, Article>().ReverseMap();
         }
     }
 }

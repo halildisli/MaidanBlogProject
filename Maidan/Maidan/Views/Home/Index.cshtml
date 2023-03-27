@@ -38,7 +38,7 @@
 </div>
 <div class="container my-2">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             @{
                 foreach (var item in top10Articles)
                 {
@@ -49,12 +49,12 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="card-body">
-                                    <h5 class="card-title">@item.Title</h5>
+                                    <a asp-action="GetArticle" asp-route-id="@item.Id"><h5 class="card-title">@item.Title</h5></a>
                                     <p class="card-text">
                                         @{
-                                            if (item.Content.Length > 30)
+                                            if (item.Content.Length > 500)
                                             {
-                                                @item.Content.Substring(0,30)
+                                                @item.Content.Substring(0,500)<text><a asp-action="GetArticle" asp-route-id="@item.Id">...</a></text>
                                             }
                                             else
                                             {
@@ -65,18 +65,24 @@
                                     <a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <img src="/images/articleImages/default-article-image.jpg" width="100%" />
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" class="w-100" /></a>
                             </div>
                         </div>
 
                         <div class="card-footer text-muted">
-                            @{
-                                foreach (var tag in item.Tags)
-                                {
-                                    <span><button class="btn btn-secondary rounded-pill">@tag.Name</button></span>
-                                }
-                            }
+                            <div class="row d-flex justify-content-around">
+                                <div class="col-md-4">
+                                    <small class="text-muted">@item.NumberOfReads Views</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - item.UpdateDate).TotalMinutes)) mins ago</small>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <a asp-action="Index" class="btn-block"><i class="fa-regular fa-comment"></i></a>
+                                    <i class="fa-regular">45</i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
@@ -94,7 +100,7 @@
         </div>*@
     </div>
     
-    <div class="row my-4 text-center">
+    <div class="row my-2 text-center">
         <div><a class="btn btn-primary btn-block" asp-action="AllArticles">Load More Articles</a></div>
     </div>
 </div>
@@ -160,7 +166,7 @@
 
 <!-- Begin Featured
 ================================================== -->
-<section class="featured-posts">
+<section class="featured-posts my-4">
     <div class="section-title">
         <h2><span>Hot Reload Posts</span></h2>
     </div>
@@ -183,9 +189,9 @@
                                     <h2 class="card-title"><a asp-action="GetArticle" asp-route-id="@article.Id">@article.Title</a></h2>
                                     <h4 class="card-text">
                                         @{
-                                            if (@article.Content.Length > 300)
+                                            if (@article.Content.Length > 150)
                                             {
-                                                @article.Content.Substring(0, 300)
+                                                @article.Content.Substring(0, 150)<text>...</text>
                                             }
                                             else
                                             {
@@ -197,13 +203,13 @@
                                     <div class="metafooter">
                                         <div class="wrapfooter">
                                             <span class="meta-footer-thumb">
-                                                <a asp-action="GetAuthor" asp-route-id="@article.AuthorId" asp-controller="Home"><img class="author-thumb" src="/images/authorImages/default-author-image.png" alt="Author Avatar"></a>
+                                                <a asp-action="GetAuthor" asp-route-userName="@article.AuthorId" asp-controller="Home"><img class="author-thumb" src="/images/authorImages/default-author-image.png" alt="Author Avatar"></a>
                                             </span>
                                             <span class="author-meta">
-                                                <span class="post-name"><a href="author.html">@article.AuthorId</a></span><br />
-                                                <span class="post-date">@article.ReleaseDate.ToShortDateString()</span><span class="dot"></span><span class="post-read">@article.TotalReadTime.ToString()</span>
+                                                <span class="post-name"><a sp-action="GetAuthor" asp-route-userName="@article.AuthorId" asp-controller="Home">@article.AuthorId</a></span><br />
+                                                <span class="post-date">@article.ReleaseDate.ToShortDateString()</span><span class="dot"></span><span class="post-read">@article.NumberOfReads.ToString()<span> Views</span></span>
                                             </span>
-                                            <span class="post-read-more"><a asp-action="GetArticle" asp-route-id="@article.Id" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span>
+                                            <span class="post-read-more"><a asp-action="GetArticle" asp-route-id="@article.Id" title="Read Story"><i class="bi bi-bookmark fa-lg"></i></a></span>
                                         </div>
                                     </div>
                                 </div>

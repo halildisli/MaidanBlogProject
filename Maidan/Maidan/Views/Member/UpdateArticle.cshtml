@@ -1,10 +1,201 @@
 ﻿@model ArticleViewModel
 
 @{
-    ViewData["Title"] = "UpdateArticle";
+    //ViewData["Title"] = "UpdateArticle";
 }
 
-<h1>UpdateArticle</h1>
+@section Css{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #tags {
+            padding: 0 20px
+        }
+
+            #tags:last-child {
+                border-bottom: 1px solid #BBB;
+            }
+
+            #tags > input {
+                display: none;
+            }
+
+            #tags i {
+                display: inline-block;
+                float: right;
+                padding: 2px;
+                width: 40px;
+                height: 20px;
+                border-radius: 13px;
+                vertical-align: middle;
+                -webkit-transition: .25s .09s;
+                transition: .25s .09s;
+                position: relative;
+                background: #d8d9db;
+                box-sizing: initial;
+            }
+
+                #tags i:after {
+                    content: " ";
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background: #fff;
+                    position: absolute;
+                    left: 2px;
+                    -webkit-transition: .25s;
+                    transition: .25s;
+                }
+
+            #tags > input:checked + i {
+                background: #4bd865;
+            }
+
+                #tags > input:checked + i:after {
+                    -webkit-transform: translateX(20px);
+                    transform: translateX(20px);
+                }
+
+            #tags:hover {
+                cursor: pointer;
+            }
+    </style>
+}
+
+
+
+
+<div class="text-center bg-light my-3">
+    <h1>
+        Let's Start Writing
+    </h1>
+</div>
+<div class="my-3">
+    <hr />
+</div>
+<div class="container my-3">
+    <div class="row">
+        <form asp-action="UpdateArticle" asp-controller="Member" method="post" enctype="multipart/form-data">
+            <div class="form-group text-center">
+                <img class="w-25" src="/images/articleImages/@Model.Image" />
+            </div>
+            <div class="form-group">
+                <label for="photo" class="control-label">Choose post's image:</label>
+                <input id="photo" name="photo" type="file" class="form-control" />
+            </div>
+            <div>
+                <input asp-for="Image" hidden />
+            </div>
+            <div class="form-group">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" type="text" class="form-control" id="title" placeholder="Title">
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content">Content</label>
+                <textarea asp-for="Content" class="form-control overflow-auto" id="content" rows="10"></textarea>
+                <span asp-validation-for="Content"></span>
+            </div>
+            <div class="form-group">
+                <label id="tags" class="mb-1">
+                    <span style="padding-right:10px">Choose All / Clear</span>
+                    <input type="checkbox" id="chooseAll" /><i></i>
+                </label>
+                <select name="TagsList"
+                        id="select2"
+                        multiple="multiple"
+                        class="form-control"
+                        asp-items="ViewBag.Tags"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Article" class="btn btn-success my-2">
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+            //select2 eklentimizin tanımı
+            $('#select2').select2();
+            //hepsiniSec kodlarımız
+            $("#chooseAll").on("click", function () {
+                if ($(this).is(':checked')) {
+                    $("#select2 > option").prop("selected", "selected");
+                    $("#select2").trigger("change");
+                }
+                else {
+                    $("#select2 > option").removeAttr("selected");
+                    $("#select2").trigger("change");
+                }
+            });
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h1>UpdateArticle</h1>
 
 <h4>ArticleViewModel</h4>
 <hr />
@@ -53,8 +244,4 @@
 
 <div>
     <a asp-action="Index">Back to List Without Update</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</div>*@

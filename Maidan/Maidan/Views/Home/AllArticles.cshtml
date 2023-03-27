@@ -40,17 +40,17 @@
         {
             <div class="card my-4">
                 <div class="card-header">
-                    <img src="/images/authorImages/@item.Image" width="20" class="rounded-circle" /> @item.AuthorId
+                    <a asp-action="GetAuthor" asp-route-userName=""><img src="/images/authorImages/@item.Image" width="20" class="rounded-circle" />@item.AuthorId</a>
                 </div>
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card-body">
-                            <h5 class="card-title">@item.Title</h5>
+                            <a asp-action="GetArticle" asp-route-id="@item.Id"><h5 class="card-title">@item.Title</h5></a>
                             <p class="card-text">
                                 @{
-                                    if (item.Content.Length > 300)
+                                    if (item.Content.Length > 500)
                                     {
-                                        @item.Content.Substring(0,300)
+                                        @item.Content.Substring(0,500)<text>...</text>
                                     }
                                     else
                                     {
@@ -62,17 +62,23 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <img src="/images/articleImages/@item.Image" width="100%" />
+                        <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" class="w-100" /></a>
                     </div>
                 </div>
 
                 <div class="card-footer text-muted">
-                    @{
-                        foreach (var tag in item.Tags)
-                        {
-                            <span><button class="btn btn-secondary rounded-pill">@tag.Name</button></span>
-                        }
-                    }
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-md-4">
+                            <small class="text-muted">@item.NumberOfReads Views</small>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - item.UpdateDate).TotalMinutes)) mins ago</small>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <a asp-action="Index" class="btn-block"><i class="fa-regular fa-comment"></i></a>
+                            <i class="fa-regular">45</i>
+                        </div>
+                    </div>
                 </div>
             </div>
         }

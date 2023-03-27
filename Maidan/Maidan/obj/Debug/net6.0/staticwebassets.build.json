@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sOirDOV7kEl/UPX08mLrjjuvx4lYiZ3KIXYHYNoUYxc=",
+  "Hash": "6A3AiGcgIkFJjdBuLxcM9mJC8334RnOWDCJ49xLk0OY=",
   "Source": "Maidan",
   "BasePath": "_content/Maidan",
   "Mode": "Default",
@@ -425,6 +425,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\0fa280b8-b8dc-4403-8fa8-34590bf8ac1f.png",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "images/articleImages/0fa280b8-b8dc-4403-8fa8-34590bf8ac1f.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\articleImages\\0fa280b8-b8dc-4403-8fa8-34590bf8ac1f.png"
+    },
+    {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\0fff120e-2763-47f1-aac4-857878720e5c.jpg",
       "SourceId": "Maidan",
       "SourceType": "Discovered",
@@ -508,6 +525,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\articleImages\\30c1199e-87b8-4671-9691-12ccd4ac88b8.jpg"
+    },
+    {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\599d6f97-fd0a-4e6c-94d4-0eb4c9542eea.jpg",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "images/articleImages/599d6f97-fd0a-4e6c-94d4-0eb4c9542eea.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\articleImages\\599d6f97-fd0a-4e6c-94d4-0eb4c9542eea.jpg"
     },
     {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\87455c55-f675-4f5d-b17a-b4d03766589d.jpg",
@@ -612,6 +646,23 @@
       "OriginalItemSpec": "wwwroot\\images\\articleImages\\be4034bf-58a4-4529-9631-56463ff4aa0d.jpg"
     },
     {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\c8d679b2-ea44-4737-8707-afd39e8d6269.png",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "images/articleImages/c8d679b2-ea44-4737-8707-afd39e8d6269.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\articleImages\\c8d679b2-ea44-4737-8707-afd39e8d6269.png"
+    },
+    {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\d7440345-5630-417d-b8d2-c0e43f34a601.jpg",
       "SourceId": "Maidan",
       "SourceType": "Discovered",
@@ -644,6 +695,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\articleImages\\d7e132f5-3d21-4448-9255-724e4671caa6.jpg"
+    },
+    {
+      "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\d9c36e58-9dee-424d-a6c2-e6e25d33fcc7.jpg",
+      "SourceId": "Maidan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\",
+      "BasePath": "_content/Maidan",
+      "RelativePath": "images/articleImages/d9c36e58-9dee-424d-a6c2-e6e25d33fcc7.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\articleImages\\d9c36e58-9dee-424d-a6c2-e6e25d33fcc7.jpg"
     },
     {
       "Identity": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\wwwroot\\images\\articleImages\\dab7b653-856e-44b1-9787-e85d40b0ea7e.jpg",

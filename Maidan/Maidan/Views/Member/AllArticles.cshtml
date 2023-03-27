@@ -1,8 +1,9 @@
 ﻿@model List<Article>
 @{
-	ViewData["Title"] = "All Articles";
-	Layout = "_Layout";
-	
+    ViewData["Title"] = "All Articles";
+    Layout = "_Layout";
+    List<Author> authors = ViewBag.Authors;
+
 }
 <div class="container my-2 text-center">
     <h2>Articles on Ma<span style="color:#FFC017">i</span>dan.</h2>
@@ -10,11 +11,12 @@
 </div>
 <div class="container my-2">
     @{
+        int i = 0;
         foreach (var item in Model)
         {
             <div class="card my-4">
                 <div class="card-header">
-                    <img src="/images/authorImages/@ViewBag.AuthorPhoto" width="20" class="rounded-circle" /> @ViewBag.AuthorName
+                    <img src="/images/authorImages/default-author-image.png" width="20" class="rounded-circle" />
                 </div>
                 <div class="row">
                     <div class="col-md-9">
@@ -23,9 +25,9 @@
                             <a asp-action="GetArticle" asp-route-id="@item.Id"><h5 class="card-title">@item.Title</h5></a>
                             <p class="card-text">
                                 @{
-                                    if (item.Content.Length > 300)
+                                    if (item.Content.Length > 500)
                                     {
-                                        @item.Content.Substring(0,300)
+                                        @item.Content.Substring(0,500)<text>...</text>
                                     }
                                     else
                                     {
@@ -36,21 +38,28 @@
                             <div><a asp-action="GetArticle" class="btn btn-primary" asp-route-id="@item.Id">Go Article</a></div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-center">
                         <a asp-action="GetArticle" asp-route-id="@item.Id"><img src="/images/articleImages/@item.Image" width="100" /></a>
                         
                     </div>
                 </div>
 
                 <div class="card-footer text-muted">
-                    @{
-                        foreach (var tag in item.Tags)
-                        {
-                            <span><button class="btn btn-secondary rounded-pill">@tag.Name</button></span>
-                        }
-                    }
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-md-4">
+                            <small class="text-muted">@item.NumberOfReads Views</small>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">Last updated @(Convert.ToInt32((DateTime.Now - item.UpdateDate).TotalMinutes)) mins ago</small>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <a asp-action="Index" class="btn-block"><i class="fa-regular fa-comment"></i></a>
+                            <i class="fa-regular">45</i>
+                        </div>
+                    </div>
                 </div>
             </div>
+            i++;
         }
     }
     <div class="row my-4 text-center">

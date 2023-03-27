@@ -2,23 +2,23 @@
 
 @{
     ViewData["Title"] = Model.UserName;
-    string authorPhoto = ViewBag.AuthorPhoto;
+    string authorPhoto=ViewBag.AuthorPhoto;
 }
 
 <div class="container">
     <div class="row text-center m-4">
-        <h4>@Model.UserName</h4>
-        <hr />
+    <h4>@Model.UserName</h4>
+    <hr />
     </div>
     <div class="row m-4">
         <dl class="row">
             <dt class="col-sm-0">
-
+                
             </dt>
             <dd class="col-sm-12 text-center m-4">
                 <img src="/images/authorImages/@authorPhoto" width="100" class="rounded-circle w-25" />
             </dd>
-            <hr />
+            <hr/>
             <dt class="col-sm-2 m-4">
                 @Html.DisplayNameFor(model => model.UserName)
             </dt>
