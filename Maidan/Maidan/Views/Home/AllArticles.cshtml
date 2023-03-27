@@ -3,6 +3,7 @@
     ViewData["Title"] = "maidan.";
     List<Article> Articles = Model.OrderByDescending(a => a.NumberOfReads).Take(100).ToList();
     List<Author> authors = ViewBag.Authors;
+    List<Author> allAuthors = ViewBag.AuthorsOfAllArticles;
 }
 <!-- Begin Site Title
 ================================================== -->
@@ -36,11 +37,12 @@
 </div>
 <div class="container my-2">
     @{
+        int i = 0;
         foreach (var item in Articles)
         {
             <div class="card my-4">
                 <div class="card-header">
-                    <a asp-action="GetAuthor" asp-route-userName=""><img src="/images/authorImages/@item.Image" width="20" class="rounded-circle" />@item.AuthorId</a>
+                    <a asp-action="GetAuthor" asp-route-userName="@allAuthors[i].UserName"><img src="/images/authorImages/@allAuthors[i].Photo" width="20" class="rounded-circle" />@allAuthors[i].UserName</a>
                 </div>
                 <div class="row">
                     <div class="col-md-9">

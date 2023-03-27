@@ -29,6 +29,22 @@ namespace Maidan.Controllers
 
         public IActionResult Index()
         {
+            List<Article> topTenArticles = _context.Articles.OrderByDescending(a => a.NumberOfReads).Take(10).ToList();
+            List<Author> authorsOfTopTenArticles = new();
+            foreach(Article item in topTenArticles)
+            {
+                Author author = _context.Authors.Where(a => a.Id == item.AuthorId).FirstOrDefault();
+                authorsOfTopTenArticles.Add(author);
+            }
+            ViewBag.AuthorsOfTopTenArticles = authorsOfTopTenArticles;
+            List<Article> lastSixArticles = _context.Articles.OrderByDescending(a => a.UpdateDate).Take(6).ToList();
+            List<Author> authorsOfLastSixArticles = new();
+            foreach (Article item in lastSixArticles)
+            {
+                Author author = _context.Authors.Where(a => a.Id == item.AuthorId).FirstOrDefault();
+                authorsOfLastSixArticles.Add(author);
+            }
+            ViewBag.AuthorsOfLastSixArticles = authorsOfLastSixArticles;
             var authors = _context.Authors.ToList();
             ViewBag.Authors = authors;
             var articles = _context.Articles.ToList();
@@ -38,6 +54,14 @@ namespace Maidan.Controllers
         }
         public IActionResult AllArticles()
         {
+            List<Article> allArticles = _context.Articles.ToList();
+            List<Author> authorsOfAllArticles = new();
+            foreach (Article item in allArticles)
+            {
+                Author author = _context.Authors.Where(a => a.Id == item.AuthorId).FirstOrDefault();
+                authorsOfAllArticles.Add(author);
+            }
+            ViewBag.AuthorsOfAllArticles = authorsOfAllArticles;
             var authors = _context.Authors.ToList();
             ViewBag.Authors = authors;
             var articles = _context.Articles.ToList();
