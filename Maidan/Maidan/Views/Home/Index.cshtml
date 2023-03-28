@@ -45,11 +45,12 @@
                 foreach (var item in top10Articles)
                 {
                     <div class="card my-4">
-                        <div class="card-header">
-                            <img src="~/images/authorImages/@authorsOfTopTenArticles[i].Photo" width="20" class="rounded-circle" /> @authorsOfTopTenArticles[i].UserName
-                        </div>
+                        
                         <div class="row">
                             <div class="col-md-9">
+                                <div class="card-header">
+                                    <a asp-action="GetAuthor" asp-route-userName="@authorsOfTopTenArticles[i].UserName"><img src="~/images/authorImages/@authorsOfTopTenArticles[i].Photo" width="20" class="rounded-circle" /> @authorsOfTopTenArticles[i].UserName</a>
+                                </div>
                                 <div class="card-body">
                                     <a asp-action="GetArticle" asp-route-id="@item.Id"><h5 class="card-title">@item.Title</h5></a>
                                     <p class="card-text">

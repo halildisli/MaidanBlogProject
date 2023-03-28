@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Maidan.ViewModels.ArticleViewModel>
+
+@{
+    ViewData["Title"] = "ListArticles";
+    List<Author> authors = ViewBag.Authors;
+}
+
+<h1>ListArticles</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                Author
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @{
+                            if (item.Content.Length > 30)
+                            {
+                                @item.Content.Substring(0,30)
+                            }
+                            else
+                            {
+                                @item.Content
+                            }
+                        }
+                    </td>
+                    <td>
+                        <img src="/images/articleImages/@item.Image" class="w-25" />
+                    </td>
+                    <td>
+                        @authors[i].UserName
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col col-md-4 m-2">
+                                <a class="btn btn-warning" asp-action="EditArticle" asp-route-id="@item.Id">Edit Article</a>
+                            </div>
+                            <div class="col col-md-4 m-2">
+                                <a class="btn btn-danger" asp-action="DeleteArticle" asp-route-id="@item.Id">Delete Article</a>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

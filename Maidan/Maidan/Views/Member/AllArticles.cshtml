@@ -15,9 +15,11 @@
         foreach (var item in Model)
         {
             <div class="card my-4">
-                <a asp-action="GetAuthor" asp-route-userName="@allAuthors[i].UserName"><img src="/images/authorImages/@allAuthors[i].Photo" width="20" class="rounded-circle" /> @allAuthors[i].UserName</a>
                 <div class="row">
                     <div class="col-md-9">
+                        <div class="card-header">
+                            <a asp-action="GetAuthor" asp-route-userName="@allAuthors[i].UserName"><img src="/images/authorImages/@allAuthors[i].Photo" width="20" class="rounded-circle" /> @allAuthors[i].UserName</a>
+                        </div>
                         <div class="card-body">
 
                             <a asp-action="GetArticle" asp-route-id="@item.Id"><h5 class="card-title">@item.Title</h5></a>

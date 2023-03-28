@@ -9,7 +9,7 @@ namespace Maidan.Areas.Admin.ViewModels
             get; set;
         }
         [MaxLength(30, ErrorMessage = "Username cannot be greater than 30 characters!")]
-        [MinLength(5, ErrorMessage = "Username cannot be greater than 30 characters!")]
+        [MinLength(5, ErrorMessage = "Username cannot be less than 5 characters!")]
         [Required]
         public string? UserName { get; set; }
 

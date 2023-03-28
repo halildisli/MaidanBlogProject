@@ -50,6 +50,7 @@ namespace Maidan.Controllers
                 var authorTags = _context.Tags.Where(a => a.Authors.Contains(author)).ToList();
                 if (authorTags != null)
                 {
+                    
                     foreach (var item in authorTags)
                     {
                         articlesList.Add(_context.Articles.Where(a => a.Tags.Contains(item)).ToList());
@@ -64,8 +65,20 @@ namespace Maidan.Controllers
                         }
                     }
                     ViewBag.Authors = authors;
+                    if (authorTags.Count == 0)
+                    {
+                        List<Author> authors1 = _context.Authors.ToList();
+                        foreach (var item in _context.Articles.ToList())
+                        {
+                            var tempAuthor= _context.Authors.Where(a => a.Id == item.AuthorId).FirstOrDefault();
+                            authors1.Add(tempAuthor);
+                        }
+                        ViewBag.Authors = authors1;
+                        return View(_context.Articles.ToList());
+                    }
                     return View(articles);
                 }
+                
             }
             return View(_context.Articles.ToList());
         }
@@ -329,8 +342,18 @@ namespace Maidan.Controllers
                         }
                     }
                 }
-                _context.Articles.Update(toBeUpdated);
-                _context.SaveChanges();
+                try
+                {
+                    _context.Articles.Update(toBeUpdated);
+                    var result=await _context.SaveChangesAsync();
+
+                }
+                catch (Exception)
+                {
+                    toBeUpdated.Tags.Clear();
+                    _context.Articles.Update(toBeUpdated);
+                    var result=await _context.SaveChangesAsync();
+                }
                 return RedirectToAction("Index", "Member");
             }
             return View();

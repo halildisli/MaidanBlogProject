@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRGVsZXRlVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/EditArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRWRpdEFydGljbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/EditTag.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRWRpdFRhZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/ListArticles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTGlzdEFydGljbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GitHubProjects/MaidanBlogProject/MaidanBlogProject/Maidan/Maidan/Areas/Admin/Views/Admin/ListTags.cshtml]
