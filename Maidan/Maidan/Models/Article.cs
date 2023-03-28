@@ -9,6 +9,7 @@ namespace Maidan.Models
         public Article()
         {
             Tags = new List<Tag>();
+            Comments = new List<Comment>();
             ReleaseDate = DateTime.Now;
             UpdateDate = ReleaseDate;
         }
@@ -29,6 +30,7 @@ namespace Maidan.Models
 
         public Author Author { get; set; }
         public List<Tag> Tags { get; set; }
+        public List<Comment> Comments { get; set; }
 
     }
 }

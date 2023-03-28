@@ -3,6 +3,9 @@
     ViewData["Title"] = "Index";
     Layout = "_Layout";
     Author author = ViewBag.Author;
+    List<Comment> comments = ViewBag.Comments;
+    List<Author> authorsOfComments = ViewBag.AuthorsOfComments;
+    Author user = ViewBag.CommentAuthor;
 }
 
 <!-- Begin Article
@@ -65,13 +68,14 @@
                     <div class="col-md-10">
                         <div class="row">
                             <div class="text-left">
-                            <a class="link-dark m-2" asp-action="GetAuthor" asp-route-userName="@author.UserName">@author.UserName</a>
-                            <a href="#" class="btn follow m-2">Follow</a>
+                                <a class="link-dark m-2" asp-action="GetAuthor" asp-route-userName="@author.UserName">@author.UserName</a>
+                                <a href="#" class="btn follow m-2">Follow</a>
                             </div>
                         </div>
                         <div class="row">
-                            <span class="author-description">@{
-                                    if (author.Bio==null)
+                            <span class="author-description">
+                                @{
+                                    if (author.Bio == null)
                                     {
                                         @("")
                                     }
@@ -84,13 +88,14 @@
                                     {
                                         @author.Bio
                                     }
-                            }</span>
+                                }
+                            </span>
                         </div>
                         <div class="row">
                             <div class="post-date">@Model.ReleaseDate.ToShortDateString()<span class="dot"></span><span>@Model.NumberOfReads.ToString()<span></span>Views</span></div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -106,22 +111,95 @@
                 </div>
                 <!-- End Post Content -->
                 <div class="after-post-tags">
-                        @{
-                            foreach (Tag item in Model.Tags)
-                            {
-                                <a asp-action="TagArticles" asp-route-id="@item.Id">@item.Name</a>
-                            }
+                    @{
+                        foreach (Tag item in Model.Tags)
+                        {
+                            <a asp-action="TagArticles" asp-route-id="@item.Id">@item.Name</a>
                         }
+                    }
                 </div>
             </div>
         </div>
         <!-- End Post -->
 
     </div>
+    <div class="row my-4">
+        <form asp-action="CreateComment" asp-controller="Member" method="get">
+            <div class="card col-md-10 pull-right">
+                <div class="row">
+
+                    <div class="col-2">
+                        <img src="/images/authorImages/@user.Photo" class="rounded-circle mt-2 w-100 text-center">
+                    </div>
+
+                    <div class="col-10">
+
+                        <div class="comment-box ml-2">
+
+                            <h4>Add a comment</h4>
+                            <div>
+                                <input name="ArticleId" value="@Model.Id" hidden />
+                            </div>
+                            <div class="comment-area">
+
+                                <textarea name="Content" class="form-control" placeholder="write a comment.." rows="4"></textarea>
+
+                            </div>
+
+                            <div class="comment-btns mt-2">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="pull-right">
+                                            <input class="btn btn-success send btn-sm" type="submit" value="Send">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row d-flex justify-content-end mt-100 mb-100 my-4 ">
+        <div class="col-md-10">
+            <div class="card">
+                    <div class="card-body text-center">
+                    <h4 class="card-title">Latest Comments</h4>
+                    </div>
+                    <div class="comment-widgets">
+                    <!-- Comment Row -->
+                    @{
+                        int j = 0;
+                        foreach (var item in comments)
+                        {
+                            <div class="d-flex flex-row comment-row m-2 bg-light">
+                                <div class="p-2"><img src="/images/authorImages/@authorsOfComments[j].Photo" alt="user" width="50" class="rounded-circle">
+                                </div>
+                                <div class="comment-text w-100">
+                                        <h6 class="font-medium">@authorsOfComments[j].UserName</h6> 
+                                        <p class="m-b-15 d-block text-break">@item.Content</p>
+                                    <div class="comment-footer"> 
+                                        <span class="text-muted float-right">@item.PublishDate.ToShortDateString()</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            j++;
+                        }
+                    }
+
+                    <!-- Comment Row -->
+                    </div>
+                <!-- Card -->
+            </div>
+        </div>
+    </div>
 </div>
 <!-- End Article
 ================================================== -->
-<!-- Begin Post -->
+
 
 
 <div class="hideshare"></div>
@@ -145,19 +223,22 @@
                                 </a>
                             </div>
                             <div class="card-block">
-                                <h2 class="card-title"><a asp-action ="GetArticle" asp-route-id="@article.Id">@article.Title</a></h2>
-                                <hr/>
-                                <p>@{
-                                        if (article.Content.Length>20)
+                                <h2 class="card-title"><a asp-action="GetArticle" asp-route-id="@article.Id">@article.Title</a></h2>
+                                <hr />
+                                <p>
+                                    @{
+                                        if (article.Content.Length > 20)
                                         {
-                                            @article.Content.Substring(0,20)<text>...</text>
+                                            @article.Content.Substring(0,20)
+
+                                            <text>...</text>
                                         }
                                         else
                                         {
                                             @article.Content
                                         }
-                                }
-                                
+                                    }
+
                                 </p>
                             </div>
                             <div class="card-footer">

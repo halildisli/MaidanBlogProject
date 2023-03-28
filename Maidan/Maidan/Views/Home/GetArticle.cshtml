@@ -3,6 +3,8 @@
     ViewData["Title"] = "Index";
     Layout = "_Layout";
     Author author = ViewBag.Author;
+    List<Comment> comments = ViewBag.Comments;
+    List<Author> authorsOfComments = ViewBag.AuthorsOfComments;
 }
 
 <!-- Begin Article
@@ -115,7 +117,41 @@
             </div>
         </div>
         <!-- End Post -->
+    </div>
+    <div class="row d-flex justify-content-end mt-100 mb-100 my-4 ">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Latest Comments</h4>
+                </div>
+                <div class="comment-widgets">
+                    <!-- Comment Row -->
+                    @{
+                        int j = 0;
+                        foreach (var item in comments)
+                        {
+                            <div class="d-flex flex-row comment-row m-2 bg-light">
+                                <div class="p-2">
+                                    <img src="/images/authorImages/@authorsOfComments[j].Photo" alt="user" width="50" class="rounded-circle">
+                                </div>
+                                <div class="comment-text w-100">
+                                    <h6 class="font-medium">@authorsOfComments[j].UserName</h6>
+                                    <p class="m-b-15 d-block text-break">@item.Content</p>
+                                    <div class="comment-footer">
+                                        <span class="text-muted float-right">@item.PublishDate.ToShortDateString()</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            j++;
+                        }
+                    }
 
+                    <!-- Comment Row -->
+                </div>
+                <!-- Card -->
+            </div>
+        </div>
     </div>
 </div>
 <!-- End Article

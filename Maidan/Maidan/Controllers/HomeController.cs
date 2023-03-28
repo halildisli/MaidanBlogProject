@@ -328,6 +328,18 @@ namespace Maidan.Controllers
         [HttpGet]
         public async Task<IActionResult> GetArticle(int id)
         {
+            var comments = _context.Comments.Where(c => c.ArticleId == id).ToList();
+            ViewBag.Comments = comments;
+            List<Author> authorsOfComments = new();
+            foreach (var item in comments)
+            {
+                var author1 = _context.Authors.Where(a => a.Id == item.AuthorId).FirstOrDefault();
+                if (author1 != null)
+                {
+                    authorsOfComments.Add(author1);
+                }
+            }
+            ViewBag.AuthorsOfComments = authorsOfComments;
             var article = _context.Articles.Find(id);
             var author = await _userManager.FindByIdAsync(article.AuthorId);
             var top3ArticlesForAuthor = _context.Articles.Where(a => a.AuthorId == author.Id).OrderByDescending(a => a.NumberOfReads).Take(3).ToList();

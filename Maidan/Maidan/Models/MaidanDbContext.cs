@@ -16,6 +16,7 @@ namespace Maidan.Models
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder builder)
