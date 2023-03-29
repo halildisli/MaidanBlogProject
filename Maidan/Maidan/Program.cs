@@ -18,7 +18,11 @@ namespace Maidan
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<MaidanDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("myHome")));
+            builder.Services.AddDbContext<MaidanDbContext>(options =>
+            {
+                options.UseLazyLoadingProxies();
+                options.UseSqlServer(builder.Configuration.GetConnectionString("myHome"));
+            });
 
             builder.Services.AddIdentity<Author, IdentityRole>().AddEntityFrameworkStores<MaidanDbContext>().AddDefaultTokenProviders();
 

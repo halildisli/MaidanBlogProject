@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vxUS/N06WkOTVWcZgymhyscAWDgf9IKdX9ZZX+uBk4pYhc774in7nlQAeaOksUOvp6G4b/aboQOdnDy+MlUehg==",
+  "dgSpecHash": "hE8383EFQ+y0Al1xwvUOU5qgHKmGzSzFZIrAff3rjBP0BLbEVASgSiACz722y5Yk09G8YO3+Ade+r3uBbFDP3Q==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\MaidanBlogProject\\MaidanBlogProject\\Maidan\\Maidan\\Maidan.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Halil İbrahim\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
@@ -48,6 +49,7 @@
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.4\\microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.4\\microsoft.entityframeworkcore.analyzers.7.0.4.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.4\\microsoft.entityframeworkcore.design.7.0.4.nupkg.sha512",
+    "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\7.0.4\\microsoft.entityframeworkcore.proxies.7.0.4.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.4\\microsoft.entityframeworkcore.relational.7.0.4.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.4\\microsoft.entityframeworkcore.sqlserver.7.0.4.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.4\\microsoft.entityframeworkcore.tools.7.0.4.nupkg.sha512",
@@ -134,6 +136,7 @@
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",

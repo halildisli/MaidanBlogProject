@@ -6,14 +6,14 @@ namespace Maidan.Models
 {
     public class Author:IdentityUser
     {
-        public List<Tag> Tags { get; set; }
+        public virtual List<Tag> Tags { get; set; }
         public Author()
         {
-            Articles = new List<Article>();
-            if (Tags==null)
-            {
-                Tags = new List<Tag>();
-            }
+            //Articles = new List<Article>();
+            //if (Tags==null)
+            //{
+            //    Tags = new List<Tag>();
+            //}
             MembershipDate = DateTime.Now;
         }
         public string? FirstName { get; set; }
@@ -27,7 +27,7 @@ namespace Maidan.Models
         public string? InstagramUrl { get; set; }
         public string? WebsiteUrl { get; set; }
         public DateTime? MembershipDate { get; set; }
-        public List<Article> Articles { get; set; }
+        public virtual List<Article> Articles { get; set; }
         
     }
 }

@@ -143,6 +143,10 @@ namespace Maidan.Controllers
         public IActionResult ListTags()
         {
             List<Tag> tags = _context.Tags.ToList();
+            //foreach (var item in tags)
+            //{
+            //    item.Articles = _context.Articles.Where(a => a.Tags.Contains(item)).ToList();
+            //}
             return View(tags);
         }
 

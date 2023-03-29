@@ -8,8 +8,8 @@ namespace Maidan.Models
     {
         public Article()
         {
-            Tags = new List<Tag>();
-            Comments = new List<Comment>();
+            //Tags = new List<Tag>();
+            //Comments = new List<Comment>();
             ReleaseDate = DateTime.Now;
             UpdateDate = ReleaseDate;
         }
@@ -28,9 +28,9 @@ namespace Maidan.Models
         public int NumberOfReads { get; set; }
 
 
-        public Author Author { get; set; }
-        public List<Tag> Tags { get; set; }
-        public List<Comment> Comments { get; set; }
+        public virtual Author Author { get; set; }
+        public virtual List<Tag> Tags { get; set; }
+        public virtual List<Comment> Comments { get; set; }
 
     }
 }

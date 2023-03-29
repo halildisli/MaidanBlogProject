@@ -17,7 +17,7 @@ namespace Maidan.Models
         public string Content { get; set; }
         public DateTime PublishDate { get; set; }
 
-        public Author Author { get; set; }
-        public Article Article { get; set; }
+        public virtual Author Author { get; set; }
+        public virtual Article Article { get; set; }
     }
 }
