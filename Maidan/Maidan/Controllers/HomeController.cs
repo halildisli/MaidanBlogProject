@@ -121,7 +121,16 @@ namespace Maidan.Controllers
             ViewBag.ArticlesCount = _context.Articles.Count();
             ViewBag.TagsCount = _context.Tags.Count();
             var firstArticle = _context.Articles.OrderBy(a => a.ReleaseDate).FirstOrDefault();
-            var serviceTime = (DateTime.Now - firstArticle.ReleaseDate).TotalDays;
+            double serviceTime = 0;
+            try
+            {
+                serviceTime = (DateTime.Now - firstArticle.ReleaseDate).TotalDays;
+            }
+            catch (Exception)
+            {
+
+                serviceTime = 6.0;
+            }
             ViewBag.ServiceTime = serviceTime;
             return View();
         }

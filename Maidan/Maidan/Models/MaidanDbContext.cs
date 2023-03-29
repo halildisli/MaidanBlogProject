@@ -18,7 +18,7 @@ namespace Maidan.Models
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
 
-        
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -29,11 +29,11 @@ namespace Maidan.Models
         //{
         //    modelBuilder.Entity<IdentityRole>().HasData(
         //        new IdentityRole() { Name = "admin", NormalizedName = "ADMIN", ConcurrencyStamp = "1" },
-        //        new IdentityRole() { Name = "user", NormalizedName = "USER", ConcurrencyStamp = "10" }
+        //        new IdentityRole() { Name = "member", NormalizedName = "MEMBER", ConcurrencyStamp = "10" }
         //        );
         //}
     }
-    
-    
-    
+
+
+
 }
